@@ -1,3 +1,11 @@
+/*
+    Took Help
+    Time: O(n)
+    Space: O(n)
+    Tag: Deque, Sliding Window, Two Pointers (In used heaps then it's of O(nlogn) time)
+    Difficulty: M
+*/
+
 class Solution {
 public:
     int longestSubarray(vector<int>& nums, int limit) {
