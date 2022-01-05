@@ -1,3 +1,4 @@
+// Better solution in Notes: 
 class Solution {
     bool isPalindrome(string str){
         int i=0, j=str.length()-1;
