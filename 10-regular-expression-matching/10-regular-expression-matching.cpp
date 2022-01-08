@@ -1,40 +1,26 @@
 class Solution {
-    vector<vector<int>> t;
-
-    bool recur(string s, string p, int i, int j) {
-        if (i < 0) {
-            if (j < 0)
-                return true;
-            else if (p[j] == '*')
-                return recur(s, p, i, j - 2);
-            else
-                return false;
-        }
-        if (j < 0) return false;
-
-        if (t[i][j] != -1) return t[i][j];
-
-        if (j - 1 >= 0 && p[j] == '*') {
-            if (p[j - 1] == '.')
-                return t[i][j] = recur(s, p, i, j - 2) ||
-
-                                 recur(s, p, i - 1, j);
-            else if (s[i] == p[j - 1])
-                return t[i][j] =
-                           (recur(s, p, i, j - 2) || recur(s, p, i - 1, j));
-            else
-                return t[i][j] = recur(s, p, i, j - 2);
-        }
-        if (p[j] == '.')
-            return t[i][j] = recur(s, p, i - 1, j - 1);
-        else if (s[i] == p[j])
-            return t[i][j] = recur(s, p, i - 1, j - 1);
-        return t[i][j] = false;
-    }
-
    public:
     bool isMatch(string s, string p) {
-        t.resize(31, vector<int>(31, -1));
-        return recur(s, p, s.length() - 1, p.length() - 1);
+        vector<bool> t(s.length() + 1, false), temp;
+        t[0] = true;
+        for (int i = 1; i <= p.length(); i++) {
+            temp.clear();
+            temp.resize(s.length() + 1);
+            
+            temp[0] = (i!=p.length() && p[i] == '*') ? t[0] : 0;
+            for (int j = 1; j <= s.length(); j++) {
+                if (i!=p.length() && p[i] == '*'){
+                    if(p[i-1]=='.') temp[j]=temp[j-1]||t[j-1]||t[j];
+                    else temp[j] = ((t[j-1]||temp[j-1]) && p[i-1]==s[j-1]) || t[j];
+                }
+                else if (p[i - 1] == '.')
+                    temp[j] = t[j - 1];
+                else
+                    temp[j] = t[j - 1] && (p[i - 1] == s[j - 1]);
+            }
+            t = temp;
+            if(i!=p.length() && p[i]=='*') i++;
+        }
+        return t[s.length()];
     }
 };
