@@ -1,3 +1,10 @@
+/*
+    Time: O(n*m)
+    Space: O(n)
+    Tag: DP - LCS Pattern
+    Difficulty: H
+*/
+
 class Solution {
    public:
     bool isMatch(string s, string p) {
