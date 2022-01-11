@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(n)
+    Tag: Monotonic Stack
+    Difficulty: M
+*/
+
 class Solution {
 public:
     int mctFromLeafValues(vector<int> &arr) {
