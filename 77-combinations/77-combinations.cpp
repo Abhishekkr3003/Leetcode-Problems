@@ -1,6 +1,6 @@
 class Solution {
     
-    void dfs(int n, int k, int cur, vector<int>ans, vector<vector<int>>&res){
+    void dfs(int n, int k, int cur, vector<int>&ans, vector<vector<int>>&res){
         if(ans.size()==k) {res.push_back(ans); return;}
         if(cur>n) return;
         for(int i=cur;i<=n;i++){
