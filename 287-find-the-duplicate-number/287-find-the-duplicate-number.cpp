@@ -1,3 +1,4 @@
+// Bit Manipulation | M | Time: O(n) | Space: O(1)
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
