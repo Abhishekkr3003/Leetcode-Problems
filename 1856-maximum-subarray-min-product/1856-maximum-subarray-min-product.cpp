@@ -1,3 +1,5 @@
+// MH | Monotonic Stack (nsl, nsr) | T: O(n) | S:O(n)
+
 class Solution {
 public:
     int maxSumMinProduct(vector<int>& nums) {
