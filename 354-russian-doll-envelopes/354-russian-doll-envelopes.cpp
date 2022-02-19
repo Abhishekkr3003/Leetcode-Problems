@@ -1,3 +1,5 @@
+// H (To find the logic that sort width dec and height inc) | DP (LIS) | T: O(nlogn) | S: O(n)
+
 class Solution {
 public:
     int maxEnvelopes(vector<vector<int>>& envelopes) {
