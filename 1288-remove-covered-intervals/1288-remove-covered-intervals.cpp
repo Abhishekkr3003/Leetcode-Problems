@@ -1,3 +1,5 @@
+// E | Sorting and Intervals | T: O(nlogn) | S: O(1)
+
 class Solution {
 public:
     int removeCoveredIntervals(vector<vector<int>>& intervals) {
