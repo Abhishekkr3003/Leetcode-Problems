@@ -1,4 +1,4 @@
-// M | Maths (Permutation from previous step) | T: O(n) | S: O(1)
+// M | Maths (Permutation from previous step) + Flavour of DP | T: O(n) | S: O(1)
 // Approach: https://drive.google.com/file/d/1Vx5YT4aCFHWkXF7WmudGzAHnf7kZcAHx/view
 
 class Solution {
