@@ -1,3 +1,6 @@
+/* Topic: Graph (Dijkstra) | Difficulty: H | Time: O(nodes+edge*log(nodes)) | Space: O(nodes) */
+
+
 typedef long long ll;
 class Solution {
     vector<ll> dijkstra(int n, vector<pair<int, int>> *graph, int src) {
@@ -20,8 +23,7 @@ class Solution {
                 }
             }
         }
-        // for(int num:distance) cout<<num<<" ";
-        // cout<<endl;
+
         return distance;
     }
 public:
@@ -36,11 +38,10 @@ public:
         auto src2ToAll = dijkstra(n, graph, src2);
         auto destToAll = dijkstra(n, revGraph, dest);
         if (destToAll[src1] == -1 || destToAll[src2] == -1) return -1;
-        // cout<<"here";
         ll dist = LLONG_MAX;
-        for (int i = 0; i< n; i++) {
-            if(destToAll[i]!=-1 && src1ToAll[i]!=-1 && src2ToAll[i]!=-1)
-                dist= min(dist, destToAll[i] + src1ToAll[i] + src2ToAll[i]);
+        for (int common = 0; common< n; common++) {
+            if(destToAll[common]!=-1 && src1ToAll[common]!=-1 && src2ToAll[common]!=-1)
+                dist= min(dist, destToAll[common] + src1ToAll[common] + src2ToAll[common]);
         }
       
         return dist;
