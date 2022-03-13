@@ -37,16 +37,12 @@ public:
         auto destToAll = dijkstra(n, revGraph, dest);
         if (destToAll[src1] == -1 || destToAll[src2] == -1) return -1;
         // cout<<"here";
-        ll dist1 = LLONG_MAX;
+        ll dist = LLONG_MAX;
         for (int i = 0; i< n; i++) {
             if(destToAll[i]!=-1 && src1ToAll[i]!=-1 && src2ToAll[i]!=-1)
-                dist1 = min(dist1, destToAll[i] + src1ToAll[i] + src2ToAll[i]);
+                dist= min(dist, destToAll[i] + src1ToAll[i] + src2ToAll[i]);
         }
-        ll dist2 = destToAll[src1] + destToAll[src2];
-        ll dist3 = LLONG_MAX, dist4 = LLONG_MAX;
-        if (src1ToAll[src2] != -1) dist3 = src1ToAll[src2] + src2ToAll[dest];
-        if (src2ToAll[src1] != -1) dist4 = src2ToAll[src1] + src1ToAll[dest];
-        // cout<<dist1<<" "<<dist2<<" "<<dist3<<" "<<dist4<<endl;
-        return min(dist1, min(dist2, min(dist3, dist4)));
+      
+        return dist;
     }
 };
