@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(9999)
+    Space: O(9999)
+    Tag: BFS
+    Difficulty: M
 */
 
 class Solution {
