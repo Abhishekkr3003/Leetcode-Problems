@@ -8,7 +8,7 @@
 class Solution {
 public:
     double findMedianSortedArrays(vector<int> &X, vector<int> &Y) {
-        if (X.size() > Y.size()) swap(X, Y);
+        if (X.size() > Y.size()) return findMedianSortedArrays(Y,X);
         int x = X.size(), y = Y.size();
         if (x == 0) {
             return ((y & 1) ? Y[y / 2] : (Y[y / 2] + Y[y / 2 - 1]) / 2.0);
