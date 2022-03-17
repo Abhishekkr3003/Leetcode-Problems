@@ -1,5 +1,5 @@
 /* 
-    Time: O(log(m+n))
+    Time: O(log(min(m,n)))
     Space: O(1)
     Tag: Binary Search
     Difficulty: H
