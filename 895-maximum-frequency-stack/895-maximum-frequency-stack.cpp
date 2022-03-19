@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(n)
+    Tag: Stack (Make stack for each freq)
+    Difficulty: M
+*/
+
 class FreqStack {
     int maxFreq;
     unordered_map<int,int>mp;
