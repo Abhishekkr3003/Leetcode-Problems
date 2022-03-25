@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(n^3)
+    Space: O(n^3)
+    Tag: DP (01 Knapsack)
+    Difficulty: M
 */
 
 int findMinCost(vector < vector<vector<int>>>& t, int index, int m, int n, vector<vector<int>>& costs) {
