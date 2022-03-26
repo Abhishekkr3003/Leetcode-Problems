@@ -1,8 +1,9 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(n)
+    Space: O(1)
+    Tag: DP (Linear DP on String)
+    Difficulty: VH
+    Notes: https://drive.google.com/drive/u/0/folders/1Vtkt7oEvnr_P6ZM9BrgpNt0-4ASWJhzc
 */
 
 class Solution {
