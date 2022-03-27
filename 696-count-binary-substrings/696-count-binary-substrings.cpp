@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(n)
+    Space: O(1)
+    Tag: Ad-Hoc (Counting ones and zeros) (or Maybe Sliding window)
+    Difficulty: M
 */
 
 class Solution {
