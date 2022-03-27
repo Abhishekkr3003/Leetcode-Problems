@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(len(all characters in products))
+    Space: O(No. of nodes in Trie)
+    Tag: Trie + DFS
+    Difficulty: M
 */
 
 struct Node {
