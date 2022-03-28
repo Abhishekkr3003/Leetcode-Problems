@@ -17,7 +17,7 @@ public:
         while (lo <= hi) {
             mid = lo + (hi - lo) / 2;
             if (nums[mid] == target || nums[lo] == target || nums[hi] == target) return true;
-            if (nums[mid] == nums[lo] && nums[hi] == nums[mid]) { lo++, hi--;  continue; }
+            if (nums[mid] == nums[lo] && nums[hi] == nums[mid]) { lo++, hi--;  continue; } // This is the most important condition which makes it different from search in rotated sorted array 1. ( Seen this condition from [https://leetcode.com/problems/search-in-rotated-sorted-array-ii/discuss/28218/My-8ms-C%2B%2B-solution-(o(logn)-on-average-o(n)-worst-case)])
             num=nums[mid];
             if (nums[mid] >= nums[lo] && target <= nums[lo]) num = INT_MIN;
             else if (nums[mid]<=nums[lo] && target>=nums[lo]) num = INT_MAX;
