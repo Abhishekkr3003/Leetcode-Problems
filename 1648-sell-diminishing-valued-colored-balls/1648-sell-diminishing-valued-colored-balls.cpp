@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(nlogn)
+    Space: O(1)
+    Tag: Sorting, Greedy, Maths
+    Difficulty: MH
 */
 
 typedef long long ll;
