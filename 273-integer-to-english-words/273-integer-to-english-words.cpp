@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(1)
+    Space: O(1)
+    Tag: Strings
+    Difficulty: M
 */
 
 class Solution {
@@ -11,9 +11,7 @@ class Solution {
         string res = "";
         vector<string>englishUpto19 = { "","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen" };
         vector<string>englishOf10s = { "","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety" };
-        if (s[0] != '0') {
-            res = englishUpto19[s[0] - '0'] + " Hundred ";
-        }
+        if (s[0] != '0') res = englishUpto19[s[0] - '0'] + " Hundred ";
         if (s[1] != '0') {
             if (s[1] == '1') {
                 res += englishUpto19[(s[1] - '0') * 10 + (s[2] - '0')] + " ";
@@ -21,9 +19,7 @@ class Solution {
             }
             else res += englishOf10s[s[1] - '0'] + " ";
         }
-        if (s[2] != '0') {
-            res += englishUpto19[s[2] - '0'] + " ";
-        }
+        if (s[2] != '0') res += englishUpto19[s[2] - '0'] + " ";
         return res;
     }
 public:
@@ -56,18 +52,13 @@ public:
             }
             round++;
         }
-        // cout<<res<<"|"<<endl;
         while(res.back()==' ') res.pop_back();
         int extra = 0;
         for (int i = 1; i < res.length(); i++) {
             if (res[i] == ' ' && res[i - 1] == ' ') extra++;
             else res[i - extra]=res[i];
         }
-        // cout<<extra;
-        while(extra--) {
-            // cout<<"here";
-            res.pop_back();
-        }
+        while(extra--) res.pop_back();
         return res;
     }
 };
