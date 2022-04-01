@@ -1,3 +1,11 @@
+/*
+    Time: O(nlogn) // n is no. of Processes
+    Space: O(n)
+    Tag: DP(Knapsack Pattern) with Binary Search
+    Difficulty: M
+    Note: Had to see related topics
+*/
+
 class Solution {
     vector<int> t;
     vector<vector<int>>process;
