@@ -29,7 +29,7 @@ public:
 
         sort(process.begin(), process.end());
         sort(startTime.begin(), startTime.end());
-        for (int i = 0; i < startTime.size(); i++) this->startTime.push_back(process[i][0]);
+        this->startTime=startTime;
         return solve(0);
     }
 };
