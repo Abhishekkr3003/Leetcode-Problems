@@ -1,10 +1,10 @@
 typedef long long ll;
 
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(n)
+    Space: O(1)
+    Tag: Greedy
+    Difficulty: H
 */
 
 class Solution {
