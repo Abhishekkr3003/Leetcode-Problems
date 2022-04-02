@@ -1,7 +1,7 @@
 typedef long long ll;
 
 /*
-    Time: O(n)
+    Time: O(nlogn)
     Space: O(n)
     Tag: Maths
     Difficulty: MH
