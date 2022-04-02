@@ -1,3 +1,10 @@
+/*
+    Time: O(n)
+    Space: O(k)
+    Tag: Sliding Window (`Atmost` Logic)
+    Difficulty: M
+*/
+
 class Solution {
     int atmost(vector<int>&t, int k){
         int lo=0;
