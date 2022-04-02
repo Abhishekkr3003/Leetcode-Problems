@@ -1,3 +1,10 @@
+/*
+    Time: O(n)
+    Space: O(n)
+    Tag: Typical String Algorithm (Z funtion Algorithm (https://www.youtube.com/watch?v=CpZh4eF8QBw))
+    Difficulty: H
+*/
+
 typedef long long ll;
 
 class Solution {
