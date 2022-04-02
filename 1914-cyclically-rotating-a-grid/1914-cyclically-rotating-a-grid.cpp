@@ -1,3 +1,11 @@
+/*
+    Time: O(min(m,n)*(m+n))
+    Space: O(m+n)
+    Tag: Matrix, Rotate Matrix Types
+    Difficulty: MH
+*/
+
+
 class Solution {
     void rotate(vector<int>&t, int k){
         int lo=0, hi=k-1;
