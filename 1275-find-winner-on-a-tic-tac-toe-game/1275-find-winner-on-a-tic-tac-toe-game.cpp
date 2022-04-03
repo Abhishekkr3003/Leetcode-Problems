@@ -1,3 +1,5 @@
+// Better Solution: https://leetcode.com/problems/find-winner-on-a-tic-tac-toe-game/discuss/441319/JavaPython-3-Check-rows-columns-and-two-diagonals-w-brief-explanation-and-analysis. 
+
 class Solution {
 public:
     string tictactoe(vector<vector<int>>& moves) {
