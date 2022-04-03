@@ -1,3 +1,10 @@
+/*
+    Time: Set - O(1) | Get - O(logn)
+    Space: O(n)
+    Tag: Hashmap, Binary Search
+    Difficulty: M
+*/
+
 class TimeMap {
     unordered_map<string,vector<int>>mp;
     unordered_map<string,vector<string>>mp2;
