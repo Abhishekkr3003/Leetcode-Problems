@@ -1,3 +1,10 @@
+/*
+    Time: O(nlogn)  // O(n) in Solution with O(n) space
+    Space: O(n)
+    Tag: Sorting and Greedy
+    Difficulty: M
+*/
+
 class Solution {
 public:
     int candy(vector<int>& ratings) {
