@@ -1,8 +1,9 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: 2 Heaps (Min and Max)
+    Difficulty: H
+    Note: Had to see the `related topics`.
 */
 
 class Compare1
