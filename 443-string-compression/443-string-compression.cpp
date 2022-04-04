@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(n)
+    Space: O(1)
+    Tag: String Manipulation
+    Difficulty: E
 */
 
 class Solution {
