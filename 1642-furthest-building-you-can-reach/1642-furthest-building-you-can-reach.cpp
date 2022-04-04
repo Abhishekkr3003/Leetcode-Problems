@@ -1,8 +1,8 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: Heap (minheap) and Greedy (Difficult to think)
+    Difficulty: H
 */
 
 class Solution {
