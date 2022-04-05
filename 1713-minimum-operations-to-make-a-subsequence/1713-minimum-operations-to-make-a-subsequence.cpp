@@ -1,8 +1,9 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
-    Difficulty:
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: DP (LIS Optimal)
+    Difficulty: H to think, but EM to implement
+    Note: Clicked on discuss and found LIS
 */
 
 class Solution {
