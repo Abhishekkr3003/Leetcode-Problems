@@ -1,7 +1,7 @@
 /*
-    Time: O()
-    Space: O()
-    Tag:
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: Binary Search (UpperBound), Sorting
     Difficulty:
 */
 
