@@ -2,7 +2,8 @@
     Time: O(nlogn)
     Space: O(n)
     Tag: Binary Search (UpperBound), Sorting
-    Difficulty:
+    Difficulty: H
+    Note: Had to see the hints
 */
 
 class Solution {
