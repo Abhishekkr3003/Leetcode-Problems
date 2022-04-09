@@ -12,7 +12,7 @@ public:
         // for(int num:unique)cout<<num<<" ";
         // cout<<endl;
         while(1){
-            int i=-1, j=0;
+            int i=start-1, j=start;
             int pivot=unique[end];
             while(j<end){
                 if(mp[unique[j]]<=mp[pivot]) swap(unique[j],unique[++i]);
