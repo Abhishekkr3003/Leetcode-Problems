@@ -1,8 +1,9 @@
 /*
-    Time: O(nlogn)
+    Time: O(nlogn) 
     Space: O(n)
     Tag: Preifx Sum, Binary Search (Lower Bound)
     Difficulty: M
+    Note: Can be solved in O(n) time and O(1) space with two pointers (See Lee)
 */
 
 class Solution {
