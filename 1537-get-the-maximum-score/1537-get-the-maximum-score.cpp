@@ -25,8 +25,6 @@ public:
             int idx = lower_bound(nums2.begin(), nums2.end(), nums1[i]) - nums2.begin();
             if (idx >= nums2.size() || nums2[idx] != nums1[i]) continue;
             res =(res+ max(prefNums1[i + 1] - prefNums1[lastIdx1], prefNums2[idx + 1] - prefNums2[lastIdx2]))%mod;
-            // cout<<idx<<endl;
-            // cout<<res<<endl;
             lastIdx1 = i + 1;
             lastIdx2 = idx + 1;
         }
