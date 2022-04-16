@@ -1,3 +1,10 @@
+/*
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: Preifx Sum, Binary Search (Lower Bound)
+    Difficulty: M
+*/
+
 class Solution {
 public:
     int maxSum(vector<int>& nums1, vector<int>& nums2) {
