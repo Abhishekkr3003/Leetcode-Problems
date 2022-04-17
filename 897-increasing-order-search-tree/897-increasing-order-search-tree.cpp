@@ -9,6 +9,14 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+/* 
+    Time: O(n)
+    Space: O(n) [Recursion]
+    Tag: Tree Traversal
+    Difficulty: M
+*/
+
 class Solution {
     TreeNode *head, *ptr;
     void solve(TreeNode* root){
