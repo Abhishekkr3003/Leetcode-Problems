@@ -12,7 +12,7 @@
 
 /* 
     Time: O(n)
-    Space: O(n) [Recursion]
+    Space: O(h) [Recursion]
     Tag: Tree Traversal
     Difficulty: M
 */
