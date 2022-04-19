@@ -10,32 +10,34 @@
  * };
  */
 class Solution {
-    map<int,vector<pair<int,int>>>mp;
-    
-    void solve(TreeNode *root, int vert, int horiz){
-        if(!root) return;
-        mp[horiz].push_back({root->val,vert});
-        solve(root->left, vert+1, horiz-1);
-        solve(root->right, vert+1, horiz+1);
-    }
 public:
     vector<vector<int>> verticalTraversal(TreeNode* root) {
-        solve(root,0,0);
-        vector<vector<int>>res(mp.size());
-        int j=0;
-        // for(auto p:mp){
-        //     for(auto val:p.second) cout<<val.first<<" ";
-        //     cout<<endl;
-        // }
-        for(auto p:mp){
-            sort(p.second.begin(), p.second.end(),[](auto &a, auto &b){
-                if(a.second!=b.second) return a.second<b.second; 
-                return a.first<b.first;
-            });
-            for(int i=0;i<p.second.size();i++){
-                res[j].push_back(p.second[i].first);
+        if(!root) return {};
+        map<int, vector<pair<int,int>>> mp;
+        queue<pair<int, TreeNode *>> q;
+        q.push({0, root});
+        int size=0;
+        int row=0;
+        while (!q.empty()) {
+            int size=q.size();
+            row++;
+            for(int i=0;i<size;i++){
+                TreeNode *node = q.front().second;
+                int pos = q.front().first;
+                q.pop();
+                mp[pos].push_back({row,node->val});
+                if (node->left) q.push({pos - 1, node->left});
+                if (node->right) q.push({pos + 1, node->right});
             }
-            j++;
+        }
+        vector<vector<int>>res;
+        for (auto p : mp) {
+            sort(p.second.begin(), p.second.end(),[](pair<int,int>&p1, pair<int,int>&p2){
+                if(p1.first==p2.first) return p1.second<p2.second;
+                return p1.first<p2.first;
+            });
+            res.push_back({});
+            for(auto val:p.second) res.back().push_back(val.second);
         }
         return res;
     }
