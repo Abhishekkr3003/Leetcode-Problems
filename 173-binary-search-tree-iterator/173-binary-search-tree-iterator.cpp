@@ -22,12 +22,10 @@ public:
     int next() {
         TreeNode *node=st.top();
         st.pop();
-        if(node->right){
-            TreeNode *ptr=node->right;
-            while(ptr){
-                st.push(ptr);
-                ptr=ptr->left;
-            }
+        TreeNode *ptr=node->right;
+        while(ptr){
+            st.push(ptr);
+            ptr=ptr->left;
         }
         return node->val;
     }
