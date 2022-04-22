@@ -1,16 +1,17 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: Binary Search (Lower Bound and Upper Bound)
+    Difficulty: EM
 */
 
 class Solution {
 public:
     vector<int> platesBetweenCandles(string s, vector<vector<int>> &queries) {
-        vector<int> t;
+        vector<int> t(s.length(),INT_MAX);
+        int idx=0;
         for (int i = 0; i < s.length(); i++) {
-            if (s[i] == '|') t.push_back(i);
+            if (s[i] == '|') t[idx++]=i;
         }
         vector<int> res(queries.size());
         int i = 0;
