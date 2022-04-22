@@ -1,3 +1,9 @@
+/* 
+    Time: O(n)
+    Space: O(1)
+    Tag: Math, Sliding Window
+    Difficulty: E
+*/
 
 typedef long long ll;
 
