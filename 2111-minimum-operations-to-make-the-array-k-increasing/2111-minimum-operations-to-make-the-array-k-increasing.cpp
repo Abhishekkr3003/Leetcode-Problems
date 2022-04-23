@@ -2,7 +2,7 @@
     Time: O(nlogn)
     Space: O(n)
     Tag: DP and Binary Seach (LIS)
-    Difficulty: 
+    Difficulty: H
 */
 
 class Solution {
