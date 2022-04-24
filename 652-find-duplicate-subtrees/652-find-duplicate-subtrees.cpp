@@ -17,7 +17,7 @@
 */
 
 class Solution {
-    unordered_map<string, pair<int, TreeNode *>> mp;
+    map<string, pair<int, TreeNode *>> mp;
 
     string preorder(TreeNode *root) {
         if (!root) return "";
