@@ -9,6 +9,13 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+/* 
+    Time: O(n)
+    Space: O(n*h) || We are storing each node value its depth times in hashmap
+    Tag: Serialize and Deserialize Binary Tree
+    Difficulty: MH
+*/
+
 class Solution {
     unordered_map<string, pair<int, TreeNode *>> mp;
 
