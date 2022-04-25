@@ -1,15 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
-*/
-
-/* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(n)
+    Tag: String, Math
+    Difficulty: MH
 */
 
 class Solution {
