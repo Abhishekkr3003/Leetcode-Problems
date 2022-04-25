@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(n)
+    Tag: Array Manipulation, Prefix, Sufix manipilation
+    Difficulty: MH
 */
 
 class Solution {
@@ -24,9 +24,6 @@ public:
             else
                 righSide[i] = righSide[i + 1];
         }
-        // for (int num : leftSide) cout << num << " ";
-        // cout << endl;
-        // for (int num : righSide) cout << num << " ";
         vector<int> res;
         for (int i = 0; i < n; i++) {
             if (leftSide[i] <= i - time && righSide[i] >= i + time) res.push_back(i);
