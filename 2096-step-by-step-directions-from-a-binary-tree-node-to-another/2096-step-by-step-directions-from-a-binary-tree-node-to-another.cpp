@@ -10,10 +10,10 @@
  * };
  */
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(h)
+    Tag: Tree Traversal, LCA
+    Difficulty: M
 */
 
 class Solution {
