@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(n)
+    Tag: DP (Knapsack Pattern)
+    Difficulty: H
+*/
+
 class Solution {
     vector<vector<int>> t;
     vector<int> nums1, nums2;
