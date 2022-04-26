@@ -1,10 +1,11 @@
 typedef long long ll;
 
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(m*n)
+    Space: O(m*n)
+    Tag: Matrix (Find max score point in O(m) time using maxFromRight and maxFromleft arrays)
+    Difficulty: MH
+    Note: https://leetcode.com/problems/maximum-number-of-points-with-cost/discuss/1346996/Why-this-is-a-good-problem-and-what-you-can-learn-from-what-I-learned
 */
 
 class Solution {
