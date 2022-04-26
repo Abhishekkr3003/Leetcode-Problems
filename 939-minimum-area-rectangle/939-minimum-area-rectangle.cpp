@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(N^2) || it needs a better description for sure. It's O(n ^ 2) because the total number of steps in the second loop and set intersection is n. When all points have a different x, set will include only one element (n * n * 1). If we have 2 points per x, it is n/2 * n/2 * 2. And so on...
+    Space: O(N)
+    Tag: Hashing, Maths, Geometry
+    Difficulty: MH
 */
 
 class Solution {
