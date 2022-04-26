@@ -13,7 +13,6 @@ public:
     SnapshotArray(int length) {
         updates.resize(length);
         curSnap = 0;
-        // cout<<updates.size()<<endl;
     }
 
     void set(int index, int val) {
@@ -29,10 +28,7 @@ public:
     }
 
     int get(int index, int snap_id) {
-        // cout<<"here\n";
-        if (updates[index].empty()) return 0;
         int idx = upper_bound(updates[index].begin(), updates[index].end(), make_pair(snap_id,INT_MAX)) - updates[index].begin();
-        // cout<<idx<<endl;
         if (idx == 0) return 0;
         return updates[index][idx - 1].second;
     }
