@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n^2)
+    Space: O(n)
+    Tag: DP - LIS (n^2)
+    Difficulty: M
 */
 
 class Solution {
@@ -28,7 +28,6 @@ public:
                         ptr2++;
                     }
                     if (ptr2 == i - 1) {
-                        // cout<<mp[i][j].first<<" "<<mp[i - 1][k].first<<endl;
                         mp[i][j].second = max(mp[i][j].second,mp[i - 1][k].second + 1);
                         res = max(res, mp[i][j].second);
                     }
