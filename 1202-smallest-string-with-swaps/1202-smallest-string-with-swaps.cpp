@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: DSU * DFS * Sorting * String Manipulation
+    Difficulty: MH
 */
 
 class Solution {
