@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n*n*m)
+    Space: O(m*n)
+    Tag: Prefix Sum
+    Difficulty: MH
 */
 
 class Solution {
@@ -21,15 +21,7 @@ public:
                 vertSum[j][i] = vertSum[j - 1][i] + grid[j - 1][i - 1];
             }
         }
-        // for(auto v:vertSum) {
-        //     for(int num:v) cout<<num<<" ";
-        //     cout<<endl;
-        // }
-        // cout<<endl;
-        // for(auto v:horizSum) {
-        //     for(int num:v) cout<<num<<" ";
-        //     cout<<endl;
-        // }
+
         int res = 0;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
