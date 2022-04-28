@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O((m*n)*log(m*n))
+    Space: O(m*n)
+    Tag: Dijkstra's Algo
+    Difficulty: MH
 */
 
 class Solution {
