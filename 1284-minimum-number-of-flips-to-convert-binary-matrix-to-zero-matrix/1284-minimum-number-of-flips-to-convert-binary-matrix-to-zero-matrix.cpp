@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(2^(m*n))
+    Space: O(2^(m*n))
+    Tag: BFS, Bit Manipulation
+    Difficulty: H
 */
 
 class Solution {
@@ -28,7 +28,6 @@ public:
                 int num = q.front();
                 if (num == 0) return dist-1;
                 q.pop();
-                // cout<<num<<"->\n";
                 for (int i = 0; i < n; i++) {
                     for (int j = 0; j < m; j++) {
                         nbr = num ^ (1 << ((i) * m + j));
@@ -48,7 +47,6 @@ public:
                             visited.insert(nbr);
                             q.push(nbr);
                         }
-                        // cout<<nbr<<endl;
                     }
                 }
             }
