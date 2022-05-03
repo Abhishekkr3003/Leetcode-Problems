@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(n) | Can be done in O(1)
+    Tag: Prefix, Suffix Sum
+    Difficulty: EM
 */
 
 class Solution {
