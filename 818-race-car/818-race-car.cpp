@@ -1,8 +1,9 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(target*32)
+    Space: O(target*32)
+    Tag: BFS
+    Difficulty: H
+    Note: https://leetcode.com/problems/race-car/discuss/762584/Python-C%2B%2B-3-Simple-Steps-(BFS)
 */
 
 class Solution {
@@ -14,7 +15,6 @@ public:
         int dist = 0;
         q.push({0, 1});
         visited.insert({0, 1});
-        int threshHold = 1e4;
         while (!q.empty()) {
             size = q.size();
             dist++;
