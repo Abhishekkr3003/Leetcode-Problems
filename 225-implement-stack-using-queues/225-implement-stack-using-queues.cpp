@@ -1,3 +1,5 @@
+// Learned how to implement using one q
+
 class MyStack {
     queue<int>q1,q2;
 public:
