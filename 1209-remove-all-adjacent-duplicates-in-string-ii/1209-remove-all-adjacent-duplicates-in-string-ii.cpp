@@ -1,3 +1,11 @@
+/* 
+    Time: O(n)
+    Space: O(n)
+    Tag: Stack
+    Difficulty: E
+    Note: Had to see the Related Topics
+*/
+
 class Solution {
 public:
     string removeDuplicates(string s, int k) {
