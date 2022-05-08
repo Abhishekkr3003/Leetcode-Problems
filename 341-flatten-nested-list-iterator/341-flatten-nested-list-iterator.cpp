@@ -21,23 +21,27 @@ class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
         for(int i=nestedList.size()-1;i>=0;i--) {
-            if(nestedList[i].isInteger() || (!nestedList[i].isInteger() && nestedList[i].getList().size()>0))
-                st.push(nestedList[i]);
+            st.push(nestedList[i]);
         }
     }
     
     int next() {
-        int val=st.top().getInteger();
+        int res=st.top().getInteger();
         st.pop();
-        return val;
+        return res;
     }
     
     bool hasNext() {
-        while(!st.empty() && !(st.top()).isInteger()){
-            vector<NestedInteger> nestedList=st.top().getList();
+        while(!st.empty() && !st.top().isInteger()) {
+            vector<NestedInteger>temp=st.top().getList();
             st.pop();
-            for(int i=nestedList.size()-1;i>=0;i--) st.push(nestedList[i]);
+            for(int i=temp.size()-1;i>=0;i--) {
+                st.push(temp[i]);
+            }
+            
         }
+        // if(!st.empty())
+        // cout<<st.top().getInteger()<<endl;
         return !st.empty();
     }
 };
