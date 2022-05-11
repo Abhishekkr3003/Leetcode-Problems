@@ -9,11 +9,11 @@ class Solution {
 public:
     int countVowelStrings(int n) {
         vector<vector<int>>t(5, vector<int>(n));
-        t[0][0]=1;
-        t[1][0]=1;
-        t[2][0]=1;
-        t[3][0]=1;
-        t[4][0]=1;
+        t[0][0]=1; // a
+        t[1][0]=1; // e
+        t[2][0]=1; // i
+        t[3][0]=1; // o
+        t[4][0]=1; // u
         for(int i=1;i<n;i++){
             t[0][i]=1;
             t[1][i]=t[1][i-1]+1;
