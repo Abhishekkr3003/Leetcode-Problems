@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(n)
+    Tag: DP (State Wise)
+    Difficulty: EM
+*/
+
 class Solution {
 public:
     int countVowelStrings(int n) {
