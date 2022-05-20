@@ -1,44 +1,42 @@
+/* 
+    Time: O()
+    Space: O()
+    Tag: 
+    Difficulty: 
+*/
+
 class Solution {
-public:
-    vector<vector<int>> ans;
-    vector<vector<int>> graph;
-    vector<int> id;
-    vector<int> lowlink;
-    vector<bool> vis;
-    int time=0;
-    void dfs(int node,int parent)
-    {
-        id[node]=lowlink[node]=time++;
-        vis[node]=true;
-        for(int &x:graph[node])
-        {
-            if(parent==x)continue;
-            if(vis[x]==false)
-            {
-                dfs(x,node);
-                lowlink[node]=min(lowlink[node],lowlink[x]);
-                if(id[node]<lowlink[x])
-                    ans.push_back({node,x});
+    vector<int> disc, low;
+    vector<vector<int>> res;
+    vector<bool> visited;
+    int time = 0;
+
+    void dfs(int node, int parent, vector<int> graph[]) {
+        visited[node] = true;
+        time++;
+        disc[node] = low[node] = time;
+        for (int nbr : graph[node]) {
+            if (!visited[nbr]) {
+                dfs(nbr, node, graph);
+                low[node] = min(low[node], low[nbr]);
+                if (low[nbr] > disc[node]) res.push_back({node, nbr});
+            } else if (nbr != parent) {
+                low[node] = min(low[node], disc[nbr]);
             }
-            else 
-                lowlink[node]=min(lowlink[node],id[x]);
         }
     }
-    vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
-        graph.resize(n);
-        vis.resize(n,false);
-        lowlink.resize(n,0);
-        id.resize(n,0);
-        for(auto &x:connections)
-        {
-            graph[x[0]].push_back(x[1]);
-            graph[x[1]].push_back(x[0]);
+
+public:
+    vector<vector<int>> criticalConnections(int n, vector<vector<int>> &connections) {
+        vector<int> graph[n];
+        for (auto &e : connections) {
+            graph[e[0]].push_back(e[1]);
+            graph[e[1]].push_back(e[0]);
         }
-        for(int i=0;i<n;i++)
-        {
-            if(vis[i]==false)
-                dfs(i,i);
-        }
-        return ans;
+        disc.resize(n, INT_MAX);
+        low.resize(n, INT_MAX);
+        visited.resize(n, false);
+        dfs(0, -1, graph);
+        return res;
     }
 };
