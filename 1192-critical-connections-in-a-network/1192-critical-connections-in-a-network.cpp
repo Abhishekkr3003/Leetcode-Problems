@@ -21,7 +21,7 @@ class Solution {
                 low[node] = min(low[node], low[nbr]);
                 if (low[nbr] > disc[node]) res.push_back({node, nbr});
             } else if (nbr != parent) {
-                low[node] = min(low[node], low[nbr]);
+                low[node] = min(low[node], disc[nbr]);
             }
         }
     }
