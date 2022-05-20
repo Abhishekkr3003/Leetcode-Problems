@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(V+E)
+    Space: O(V+E)
+    Tag: Tarjan's Algorithm Variant, Find the bridges
+    Difficulty: H
 */
 
 class Solution {
