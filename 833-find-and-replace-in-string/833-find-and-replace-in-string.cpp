@@ -1,5 +1,5 @@
 /* 
-    Time: O(m+nlogn)
+    Time: O(m+n)
     Space: O(m+n)
     Tag: String Manipulation
     Difficulty: M
