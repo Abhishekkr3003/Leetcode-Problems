@@ -20,18 +20,15 @@ public:
         for(int i=0;i<indices.size();i++){
             mp[indices[i]]={sources[i],targets[i]};
         }
-        sort(indices.begin(), indices.end());
-        int ptr = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (ptr < indices.size() && indices[ptr] == i) {
-                if (match(s, mp[indices[ptr]].first, i)){
-                    res += mp[indices[ptr]].second;
-                    i+=mp[indices[ptr]].first.length();
+            if (mp.find(i)!=mp.end()) {
+                if (match(s, mp[i].first, i)){
+                    res += mp[i].second;
+                    i+=mp[i].first.length();
                     i--;
                 }
                 else
                     res += s[i];
-                ptr++;
             } else
                 res += s[i];
         }
