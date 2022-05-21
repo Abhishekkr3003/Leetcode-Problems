@@ -31,22 +31,17 @@ public:
         int n = points.size();
         angles.reserve(2*n);
         int res = findAngles(points, location);
-        // for(double t:angles) cout<<t<<endl;
         sort(angles.begin(), angles.end());
         int size=angles.size();
         for(int i=0;i<size;i++){
             angles.push_back(360+angles[i]);
         }
-        // for(double t:angles) cout<<t<<endl;
         int ans = 0;
         int start = 0;
         for (int i = 0; i < angles.size(); i++) {
             while (angles[i] - angles[start] > angle || angles[i]-angles[start]>=360) start++;
             ans = max(ans, i - start + 1);
         }
-        // int i = 0;
-        // while (angles[i] + 360 - angles[start] <= angle) i++;
-        // ans = max(ans, (int)angles.size() - start + i);
         return res + ans;
     }
 };
