@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: Maths, Geometry (tan inverse and radian to degree conversion), Sorting, Sliding Window
+    Difficulty: H
 */
 #define PI 3.14159
 
