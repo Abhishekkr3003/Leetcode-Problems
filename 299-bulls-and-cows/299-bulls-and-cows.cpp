@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(1)
+    Tag: Hashmap
+    Difficulty: E
 */
 
 class Solution {
