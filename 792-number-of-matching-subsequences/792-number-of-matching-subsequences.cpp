@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n*p*logm) | m=s.length | n=words.length | p=words[i].length
+    Space: O(n*p)
+    Tag: Trie, String, DFS, Hashing
+    Difficulty: H
 */
 
 class Node {
@@ -33,8 +33,6 @@ public:
     }
 
     int dfs(Node *root, string &s, int idx, vector<int>pos[]) {
-        // if(idx>=0)
-        //     cout<<s[idx]<<endl;
         int res = 0;
         for (int i = 0; i < 26; i++) {
             if (root->children[i]) {
