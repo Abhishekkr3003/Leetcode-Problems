@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(logn) -> update() | O(1) -> current(), maximum(), minimum()
+    Space: O(n)
+    Tag: TreeSet, Sorting 
+    Difficulty: EM
 */
 
 class StockPrice {
