@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(n)
+    Tag: DP (generate next from prev state using hash map)
+    Difficulty: M
 */
 
 class Solution {
