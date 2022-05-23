@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogn) 
+    Space: O(n)
+    Tag: DP with Map, build next state from previous state | Instead of map we can use stack to find the greatest smallest and smallest greatest elements.
+    Difficulty: H
 */
 
 class Solution {
@@ -15,18 +15,14 @@ public:
         }
         for (int i = 0; i < arr.size(); i++) {
             auto it = pos.find(arr[i]);
-            // cout<<i<<endl;
             if (it->second.size() > 1) {
                 it->second.erase(it->second.begin());
                 nextJump[i].first = *(it->second.begin());
                 nextJump[i].second = nextJump[i].first;
             } else {
-                // cout<<"here\n";
                 if (it == pos.begin()) {
-                    // cout<<"here\n";
                     nextJump[i].second = -1;
                 } else {
-                    // cout<<"here2\n";
                     auto it2 = prev(it);
                     nextJump[i].second = *(it2->second.begin());
                 }
