@@ -7,7 +7,7 @@
 
 class StockPrice {
     unordered_map<int, int> prices;
-    set<pair<int, int>> inc, dec;
+    set<pair<int, int>> inc;
     int latest = 0;
     int maxi = 0;
     int mini = 0;
@@ -19,13 +19,11 @@ public:
     void update(int timestamp, int price) {
         if (prices.find(timestamp) != prices.end()) {
             inc.erase({prices[timestamp], timestamp});
-            dec.erase({-prices[timestamp], timestamp});
         }
         prices[timestamp] = price;
         inc.insert({prices[timestamp], timestamp});
-        dec.insert({-prices[timestamp], timestamp});
         latest = max(latest, timestamp);
-        maxi = -(dec.begin()->first);
+        maxi = inc.rbegin()->first;
         mini = inc.begin()->first;
     }
 
