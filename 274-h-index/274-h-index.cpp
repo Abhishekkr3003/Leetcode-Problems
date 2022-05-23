@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogn) || We can apply count sort instead to reduce complexity to O(n)
+    Space: O(1)
+    Tag: Sorting
+    Difficulty: M
 */
 
 class Solution {
