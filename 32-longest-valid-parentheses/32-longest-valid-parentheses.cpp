@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(n)
+    Tag: DP (Find the matching opening parentheses and check the length upto that opening parentheses and distance between current closing parentheses and matching opening paranthesis)
+    Difficulty: MH
+*/
+
 class Solution {
 public:
     int longestValidParentheses(string s) {
