@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n)
+    Space: O(n)
+    Tag: DP, Hash the last and find according to the second's start
+    Difficulty: H
 */
 
 class Solution {
