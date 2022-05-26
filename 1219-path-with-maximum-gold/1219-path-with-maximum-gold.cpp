@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(m*n+3^(m*n))
+    Space: O(m*n)
+    Tag: Backtracking and DFS
+    Difficulty: E
 */
 
 class Solution {
