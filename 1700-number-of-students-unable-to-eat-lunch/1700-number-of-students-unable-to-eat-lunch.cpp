@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(1)
+    Tag: Arrays
+    Difficulty: E
+*/
+
 class Solution {
 public:
     int countStudents(vector<int>& students, vector<int>& sandwiches) {
