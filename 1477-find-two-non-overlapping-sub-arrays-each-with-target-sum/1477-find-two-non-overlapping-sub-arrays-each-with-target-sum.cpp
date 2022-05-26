@@ -1,7 +1,7 @@
 /* 
     Time: O(n)
     Space: O(n)
-    Tag: DP, Hash the last of first and find according to the second's start
+    Tag: Two Pointers, DP, Hash the last of first and find according to the second's start
     Difficulty: H
 */
 
