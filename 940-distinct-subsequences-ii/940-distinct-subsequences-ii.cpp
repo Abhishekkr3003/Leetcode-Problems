@@ -1,3 +1,10 @@
+/* 
+    Time: O(n)
+    Space: O(1)
+    Tag: DP, Based on number of ways to continue the previous strings
+    Difficulty: H
+*/
+
 class Solution {
 public:
     int distinctSubseqII(string s) {
