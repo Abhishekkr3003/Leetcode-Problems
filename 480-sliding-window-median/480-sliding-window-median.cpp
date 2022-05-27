@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogk)
+    Space: O(n)
+    Tag: Min and Max Heaps
+    Difficulty: MH
 */
 
 class Solution {
