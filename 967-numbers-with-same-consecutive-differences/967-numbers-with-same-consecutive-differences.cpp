@@ -1,15 +1,14 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(9*2^(n-1))
+    Space: O(9*2^(n-1))
+    Tag: DFS (Alternately done by BFS)
+    Difficulty: EM
 */
 
 class Solution {
     vector<int> res;
 
     void solve(int n, int k, int num) {
-        // cout<<num<<endl;
         if (n == 0) {
             res.push_back(num);
             return;
