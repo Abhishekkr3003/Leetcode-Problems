@@ -8,9 +8,8 @@
 class Solution {
     vector<vector<vector<int>>> t;
     vector<int> solve(vector<string> &tokens, int lo, int hi) {
-        // cout<<lo<<hi<<endl;
         if (lo == hi) return {stoi(tokens[lo])};
-        if (!t[lo][hi].empty()) return t[lo][hi];
+        // if (!t[lo][hi].empty()) return t[lo][hi];
         vector<int> ans;
         for (int i = lo; i <= hi; i++) {
             if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*") {
@@ -45,7 +44,6 @@ public:
             }
         }
         tokens.push_back(expression.substr(start, expression.length() - start));
-        // for(string str:tokens) cout<<str<<endl;
         t.resize(tokens.size() + 1, vector<vector<int>>(tokens.size() + 1));
         return solve(tokens, 0, tokens.size() - 1);
     }
