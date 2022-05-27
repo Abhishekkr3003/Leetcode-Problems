@@ -1,15 +1,15 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n^2)
+    Space: O(n^4)
+    Tag: Divide and Conquer | DP (memoization)
+    Difficulty: H
 */
 
 class Solution {
     vector<vector<vector<int>>> t;
     vector<int> solve(vector<string> &tokens, int lo, int hi) {
         if (lo == hi) return {stoi(tokens[lo])};
-        // if (!t[lo][hi].empty()) return t[lo][hi];
+        if (!t[lo][hi].empty()) return t[lo][hi];
         vector<int> ans;
         for (int i = lo; i <= hi; i++) {
             if (tokens[i] == "+" || tokens[i] == "-" || tokens[i] == "*") {
