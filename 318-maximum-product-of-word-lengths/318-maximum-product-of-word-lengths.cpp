@@ -2,6 +2,13 @@
 using namespace std;
 typedef long long ll;
 
+/* 
+    Time: O(n^2)
+    Space: O(n)
+    Tag: Bit Manipulation
+    Difficulty: EM
+*/
+
 class Solution {
 public:
     int maxProduct(vector<string> &words) {
