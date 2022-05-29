@@ -1,53 +1,77 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        vector<int> freqt(128, 0), freqs(128, 0);
-        for (char ch : t) freqt[ch]++;
-        int count = t.length();
+        vector<int> freq(128, 0);
+        for (char ch : t) freq[ch]++;
+        bool found;
         int i = 0;
-        for (; i < s.length() && count; i++) {
-            if (freqt[s[i]] > 0) {
-                if (freqt[s[i]] > freqs[s[i]]) count--;
-                freqs[s[i]]++;
+        for (; i < s.length(); i++) {
+            freq[s[i]]--;
+            found = true;
+            for (int j = 0; j < 128; j++) {
+                if (freq[j] > 0) {
+                    found = false;
+                    break;
+                }
             }
+            if (found) break;
         }
-        if (count > 0) {
+        if (found == false) {
             return "";
         }
-        int start = 0, len = i - start, minLenStart = 0;
-        
-        while (freqt[s[start]] <= 0 || freqt[s[start]] < freqs[s[start]]) {
-            freqs[s[start++]]--;
-            // cout<<"here";
-            if (i - start < len) {
-                len = i - start;
-                minLenStart = start;
-            }
+        int start = 0;
+        while (freq[s[start]] < 0) {
+            freq[s[start]]++;
+            start++;
         }
-        
+        int res = i - start + 1;
+        string resStr = s.substr(start, res);
+        // cout << "res: " << res << endl;
+        i++;
         for (; i < s.length(); i++) {
-            // cout<<"here";
-            // cout << i << " " << start << endl;
-            freqs[s[i]]++;
-            while (freqt[s[start]] <= 0 || freqt[s[start]] < freqs[s[start]]) {
-                freqs[s[start++]]--;
+            freq[s[i]]--;
+            freq[s[start++]]++;
+            found = true;
+            for (int j = 0; j < 128; j++) {
+                if (freq[j] > 0) {
+                    found = false;
+                    break;
+                }
             }
-            if (i - start +1< len) {
-                len = i - start + 1;
-                minLenStart = start;
+            if (res > i - start + 1) {
+                res = i - start + 1;
+                resStr = s.substr(start, res);
+            }
+            if (found) {
+                while (freq[s[start]] < 0) {
+                    freq[s[start]]++;
+                    start++;
+                }
+            }
+            if (res > i - start + 1) {
+                res = i - start + 1;
+                resStr = s.substr(start, res);
+            }
+            // cout << resStr << endl;
+        }
+        found = true;
+        for (int j = 0; j < 128; j++) {
+            if (freq[j] > 0) {
+                found = false;
+                break;
             }
         }
-        // cout << minLenStart << " " << len << endl;
-        while (freqt[s[start]] <= 0 || freqt[s[start]] < freqs[s[start]]) {
-            freqs[s[start++]]--;
-            // cout<<"here";
-            if (s.length() - start < len) {
-                len = s.length() - start;
-                minLenStart = start;
+        if (found == true) {
+            while (freq[s[start]] < 0) {
+                freq[s[start]]++;
+                start++;
             }
         }
-        // cout<<start<<endl;
-        // cout << minLenStart << " " << len << endl;
-        return s.substr(minLenStart, len);
+        // cout << start << endl;
+        if (res > (int)s.length() - start) {
+            res = (int)s.length() - start;
+            resStr = s.substr(start, res);
+        }
+        return resStr;
     }
 };
