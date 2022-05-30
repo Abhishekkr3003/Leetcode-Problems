@@ -1,27 +1,26 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(nlogn)
+    Space: O(n)
+    Tag: Segment Tree, Greedy (put the possible feasible smallest index in place of cur index), Queue
+    Difficulty: H (Both Logic and Implementation)
 */
 
 class SegmentTree {
-    vector<int>tree;
+    vector<int> tree;
 
 public:
     SegmentTree(int size) {
-        tree.resize(4*size+1,0);
+        tree.resize(4 * size + 1, 0);
     }
-    
-    void printTree(){
-        for(int num:tree) cout<<num<<"";
-        cout<<endl;
+
+    void printTree() {
+        for (int num : tree) cout << num << "";
+        cout << endl;
     }
 
     void updateTree(int lo, int hi, int index, int upd) {
         if (upd < lo || upd > hi) return;
         if (lo == hi) {
-            // cout<<"lo: "<<lo<<endl;
             tree[index]++;
             return;
         }
@@ -53,28 +52,21 @@ public:
         string res = "";
         SegmentTree *seg = new SegmentTree((int)num.length());
         for (int i = 0; i < num.length(); i++) {
-            // cout<<i<<endl;
             if (num[i] == '-') continue;
             int digit = num[i] - '0';
-            
+
             bool swapped = false;
             for (int j = 0; j < digit; j++) {
                 if (pos[j].size() > 0) {
-                    // cout<<j<<endl;
                     int curNumIndex = pos[j].front();
                     int shifts = seg->queryTree(0, num.length() - 1, 1, i, pos[j].front());
-                    // cout<<"Here "<<i<<" "<<shifts<<" "<<curNumIndex<<endl;
-                    // seg->printTree();
+
                     if (curNumIndex - i - shifts <= k) {
-                        
-                        int shiftIndex = pos[j].front();
-                        // cout<<"shiftIndex: "<<shiftIndex<<endl;
-                        seg->updateTree(0, num.length() - 1, 1, shiftIndex);
-                        // seg->printTree();
-                        k -= shiftIndex - i-shifts;
+                        seg->updateTree(0, num.length() - 1, 1, curNumIndex);
+                        k -= curNumIndex - i - shifts;
                         pos[j].pop();
-                        res += num[shiftIndex];
-                        num[shiftIndex] = '-';
+                        res += num[curNumIndex];
+                        num[curNumIndex] = '-';
                         swapped = true;
                         i--;
                         break;
