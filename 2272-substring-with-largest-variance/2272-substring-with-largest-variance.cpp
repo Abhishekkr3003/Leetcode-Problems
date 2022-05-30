@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(26*26*n)
+    Space: O(1)
+    Tag: Kadane's Algorithm
+    Difficulty: H (Logic) | E(Implementation)
 */
 
 class Solution {
