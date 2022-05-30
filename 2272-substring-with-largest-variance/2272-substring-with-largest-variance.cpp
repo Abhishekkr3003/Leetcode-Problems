@@ -3,6 +3,7 @@
     Space: O(1)
     Tag: Kadane's Algorithm
     Difficulty: H (Logic) | E(Implementation)
+    Explanation: https://leetcode.com/problems/substring-with-largest-variance/discuss/2038774/C%2B%2B-Fast-O(1)-space-complexity-Kadane's-for-each-pair-of-characters
 */
 
 class Solution {
