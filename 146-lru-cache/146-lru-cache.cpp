@@ -1,3 +1,10 @@
+/*
+    Time: O(1) For all functions
+    Space: O(capacity)
+    Tag: Linked List, Hashing
+    Difficulty: M
+*/
+
 class LRUCache {
     list<int>q;
     unordered_map<int,pair<int,list<int>::iterator>>mapping;
