@@ -1,28 +1,19 @@
-/*
-    Time: O(n)
-    Space: O(1)
-    Tag: Ad-Hoc (Counting ones and zeros) (or Maybe Sliding window)
-    Difficulty: M
-*/
-
 class Solution {
 public:
     int countBinarySubstrings(string s) {
-        int res = 0, ones = 0, zeros = 0;
-        for (int i = 0; i < s.length() - 1; i++)
-        {
-            if (s[i] == '0') zeros++;
-            else ones++;
-            if (s[i] != s[i + 1]) {
-                res += min(ones, zeros);
-                if (s[i + 1] == '1') ones = 0;
-                else zeros = 0;
+        int ones=0, zeros=0, res=0;
+        if(s[0]=='1') ones++;
+        else zeros++;
+        for(int i=1;i<s.length();i++){
+            if(s[i]!=s[i-1]){
+                res+=min(ones,zeros);
+                if(s[i-1]=='1') zeros=0;
+                else ones=0;
             }
+            if(s[i]=='1') ones++;
+            else zeros++;
         }
-        int n = s.length();
-        if (s[n-1] == '0') zeros++;
-        else ones++;
-        res += min(ones, zeros);
+        res+=min(ones,zeros);
         return res;
     }
 };
