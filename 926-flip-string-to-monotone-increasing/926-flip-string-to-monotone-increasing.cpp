@@ -1,3 +1,10 @@
+/*
+    Time: O(n)
+    Space: O(n)
+    Tag: Arrays, Prefix Sum
+    Difficulty: MH
+*/
+
 class Solution {
 public:
     int minFlipsMonoIncr(string s) {
