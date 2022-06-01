@@ -1,28 +1,39 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
 class Solution {
 public:
-    int ladderLength(string beginWord, string endWord, vector<string> &wordList) {
-        unordered_set<string> notVisited(wordList.begin(), wordList.end());
-        if (notVisited.find(endWord) == notVisited.end())
-            return 0;
-        queue<pair<int, string>> q;
-        q.push({0, beginWord});
-        while (!q.empty()) {
-            string word = q.front().second;
-            int val = q.front().first;
-            q.pop();
-            for (int i = 0; i < word.size(); i++) {
-                string temp = word;
-                for (int j = 0; j < 26; j++) {
-                    temp[i] = 'a' + j;
-                    if (notVisited.find(temp) != notVisited.end()) {
-                        q.push({val + 1, temp});
-                        notVisited.erase(temp);
-                        if (endWord == temp)
-                            return val + 2;
+    int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+        queue<string>q;
+        list<string>words;
+        for(int i=0;i<wordList.size();i++){
+            // sort(wordList[i].begin(), wordList[i].end());
+            if(wordList[i]!=beginWord) words.push_back(wordList[i]);
+        }
+        q.push(beginWord);
+        int dist=0;
+        int size=0;
+        while(!q.empty()){
+            size=q.size();
+            dist++;
+            for(int i=0;i<size;i++){
+                string curWord=q.front();
+                q.pop();
+                if(curWord==endWord) return dist;
+                auto it=words.begin();
+                while(it!=words.end()){
+                    string temp=*it;
+                    
+                    int diff=0;
+                    for(int j=0;j<curWord.length();j++){
+                        if(curWord[j]!=temp[j]) diff++;
+                    }
+                    
+                    // cout<<diff<<endl;
+                    if(diff==1){
+                        q.push(temp);
+                        auto prev=it;
+                        it++;
+                        words.erase(prev);
+                    }else{
+                        it++;
                     }
                 }
             }
