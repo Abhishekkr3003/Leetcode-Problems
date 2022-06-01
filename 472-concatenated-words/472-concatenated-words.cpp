@@ -5,7 +5,7 @@ public:
             return a.length()<b.length();
         });
         vector<string>res;
-        set<string>st;
+        unordered_set<string>st;
         for(string &s:words){
             if(s.length()==0) continue;
             vector<bool>t(s.length()+1,false);
