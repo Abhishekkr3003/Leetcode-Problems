@@ -1,64 +1,38 @@
-/*
-    Time: O(1)
-    Space: O(1)
-    Tag: Strings
-    Difficulty: M
-*/
-
 class Solution {
-    string findEnglish(string s) {
-        while (s.length() < 3) s = "0" + s;
-        string res = "";
-        vector<string>englishUpto19 = { "","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen" };
-        vector<string>englishOf10s = { "","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety" };
-        if (s[0] != '0') res = englishUpto19[s[0] - '0'] + " Hundred ";
-        if (s[1] != '0') {
-            if (s[1] == '1') {
-                res += englishUpto19[(s[1] - '0') * 10 + (s[2] - '0')] + " ";
-                return res;
-            }
-            else res += englishOf10s[s[1] - '0'] + " ";
-        }
-        if (s[2] != '0') res += englishUpto19[s[2] - '0'] + " ";
-        return res;
-    }
 public:
     string numberToWords(int num) {
         if(num==0) return "Zero";
-        string res = "";
-        int round = 0;
-        while (num) {
-            int digit = 0;
-            string lastThree = to_string(num % 1000);
-            while (num && digit < 3) {
-                num /= 10;
-                digit++;
+        vector<string>degree={"","Thousand","Million","Billion"};
+        vector<string>unit={"","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"};
+        vector<string>tens={"","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"};
+        string res="";
+        
+        for(int i=0;i<=3 && num;i++){
+            string cur="";
+            int bitCount=0;
+            int lastBit=num%10;
+            num/=10;
+            int secLastBit=num%10;
+            num/=10;
+            int thirdLast=num%10;
+            num/=10;
+            if(secLastBit==1){
+                cur=unit[secLastBit*10+lastBit];
+                if(thirdLast!=0){
+                    cur=unit[thirdLast]+" Hundred"+" "+cur;
+                }
+                if(!cur.empty() && cur.back()==' ') cur.pop_back();
+                if(cur!="")
+                    res=cur+" "+degree[i]+" "+res;
+                continue;
             }
-            if (round == 0) {
-                string ans=findEnglish(lastThree);
-                if(ans!="") res=ans;
-            }
-            else if (round == 1) {
-                string ans=findEnglish(lastThree);
-                if(ans!="") res = ans + " Thousand " + res;
-            }
-            else if (round == 2) {
-                string ans=findEnglish(lastThree);
-                if(ans!="") res = ans + " Million " + res;
-            }
-            else {
-                string ans=findEnglish(lastThree);
-                if(ans!="") res = ans + " Billion " + res;
-            }
-            round++;
+            if(thirdLast!=0) cur=unit[thirdLast]+" Hundred ";
+            if(secLastBit!=0) cur+=tens[secLastBit]+" ";
+            if(lastBit!=0) cur+=unit[lastBit];
+            if(!cur.empty() && cur.back()==' ') cur.pop_back();
+            if(cur!="") res=cur+" "+degree[i]+" "+res;
         }
-        while(res.back()==' ') res.pop_back();
-        int extra = 0;
-        for (int i = 1; i < res.length(); i++) {
-            if (res[i] == ' ' && res[i - 1] == ' ') extra++;
-            else res[i - extra]=res[i];
-        }
-        while(extra--) res.pop_back();
+        while(!res.empty() && res.back()==' ') res.pop_back();
         return res;
     }
 };
