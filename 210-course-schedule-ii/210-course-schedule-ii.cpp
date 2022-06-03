@@ -1,27 +1,32 @@
 class Solution {
+    
+    bool dfs(vector<int>graph[], vector<int>&vis, int cur, vector<int>&res){
+        vis[cur]=1;
+        for(int nbr:graph[cur]){
+            if(vis[nbr]==1) return false;
+            else if(vis[nbr]==0){
+                if(!dfs(graph,vis,nbr,res)) return false;
+            }
+        }
+        vis[cur]=2;
+        res.push_back(cur);
+        return true;
+    }
+    
 public:
     vector<int> findOrder(int numCourses, vector<vector<int>>& pre) {
-        vector<int>indeg(numCourses,0);
+        vector<int>vis(numCourses,0);
         vector<int>graph[numCourses];
         for(auto &edge:pre){
             graph[edge[1]].push_back(edge[0]);
-            indeg[edge[0]]++;
         }
-        queue<int>q;
         vector<int>res;
         for(int i=0;i<numCourses;i++){
-            if(indeg[i]==0) q.push(i);
-        }
-        while(!q.empty()){
-            int cur=q.front();
-            q.pop();
-            res.push_back(cur);
-            for(int nbr:graph[cur]){
-                indeg[nbr]--;
-                if(indeg[nbr]==0) q.push(nbr);
+            if(vis[i]==0){
+                if(!dfs(graph,vis,i,res)) return {};
             }
         }
-        if(res.size()==numCourses) return res;
-        return {};
+        reverse(res.begin(),res.end());
+        return res;
     }
 };
