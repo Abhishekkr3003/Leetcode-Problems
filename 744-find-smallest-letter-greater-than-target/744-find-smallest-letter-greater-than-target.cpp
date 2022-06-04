@@ -13,7 +13,6 @@ public:
                 lo=mid+1;
             }
         }
-        if(letters[ans]<=target) return letters[0];
         return letters[ans];
     }
 };
