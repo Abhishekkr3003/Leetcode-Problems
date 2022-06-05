@@ -1,47 +1,42 @@
-/*
-    Time: O(nlogn)
-    Space: O(1)
-    Tag: Sorting, Greedy, Maths
-    Difficulty: MH
-*/
-
-typedef long long ll;
-
-class Solution {
-    ll sumOfNterms(ll n) {
-        return (n * (n + 1)) / 2;
+class Solution { 
+    
+    long long sumUpto(long long n){
+        return (n*(n+1))/2;
     }
+    
 public:
     int maxProfit(vector<int>& inventory, int orders) {
-        inventory.push_back(0);
-        sort(inventory.begin(), inventory.end());
-        ll quntity = 1, i = inventory.size() - 1;
-        ll res = 0;
-        int mod = 1e9 + 7;
-        while (orders) {
-            while (inventory[i] == inventory[i - 1]) {
-                quntity++;
-                i--;
-                inventory.pop_back();
+        priority_queue<pair<int,int>>q;
+        q.push({0,0});
+        for(int i=0;i<inventory.size();i++){
+            q.push({inventory[i],1});
+        }
+        
+        int res=0;
+        
+        while(orders){
+            long long maxEle=q.top().first;
+            long long maxEleFreq=q.top().second;
+            q.pop();
+            while(q.top().first==maxEle) {
+                maxEleFreq+=q.top().second;
+                q.pop();
             }
-            int n = inventory.size();
-            int size = quntity * (inventory[n - 1] - inventory[n - 2]);
-            // cout<<size<<endl;
-            if (orders < size) {
-                ll div = orders / quntity;
-                ll rem = orders % quntity;
-                res = (res + quntity * (sumOfNterms(inventory[n - 1]) - sumOfNterms(inventory[n - 1] - div))) % mod;
-                res = (res + rem * (inventory[n - 1] - div)) % mod;
-                orders = 0;
+            int secondMax=0;
+            secondMax=q.top().first;
+            int mod=1e9+7;
+            if(orders>=(maxEle-secondMax)*maxEleFreq){
+                res=(res+maxEleFreq*(sumUpto(maxEle)-sumUpto(secondMax)))%mod;
+                int secondMaxFreq=q.top().second; q.pop();
+                q.push({secondMax, secondMaxFreq+maxEleFreq});
+                orders-=(maxEle-secondMax)*maxEleFreq;
+            }else{
+                int fullCount=orders/maxEleFreq;
+                res=(res+maxEleFreq*(sumUpto(maxEle)-sumUpto(maxEle-fullCount)))%mod;
+                res=(res+(maxEle-fullCount)*(orders%maxEleFreq))%mod;    
+                break;
             }
-            else {
-                res = (res + quntity * (sumOfNterms(inventory[n - 1]) - sumOfNterms(inventory[n - 2]))) % mod;
-                orders -= size;
-            }
-            inventory.back()=inventory[n-2];
-            // cout<<"res "<<res<<endl;
         }
         return res;
-
     }
 };
