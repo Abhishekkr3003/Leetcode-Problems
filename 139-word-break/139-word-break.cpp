@@ -1,27 +1,26 @@
-
-/* 
-    Time: O(n^3)
-    Space: O(n)
-    Tag: DP - MCM Modified (Original MCM will take O(n^2) space)
-    Difficulty: M
-*/
-
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
 class Solution {
 public:
-    bool wordBreak(string s, vector<string> &wordDict) {
-        vector<bool> t(s.length() + 1, false);
-        t[0] = true;
-        unordered_set<string> st(wordDict.begin(), wordDict.end());
-        for (int i = 1; i <= s.length(); i++) {
-            for (int j = 1; j <= i; j++) {
-                // cout << s.substr(j - 1, i - j + 1) << endl;
-                if (st.find(s.substr(j - 1, i - j + 1)) != st.end()) {
-                    t[i] = t[i] || t[j - 1];
+    bool wordBreak(string s, vector<string>& wordDict) {
+        
+        unordered_set<string>st;
+        for(string &word:wordDict){
+            reverse(word.begin(),word.end());
+            st.insert(word);
+        }
+        
+        vector<bool>t(s.length()+1,false);
+        
+        t[0]=true;
+        
+        for(int i=0;i<s.length();i++){
+            string cur=s.substr(0,i+1);
+            reverse(cur.begin(),cur.end());
+            for(int j=0;j<=i;j++){
+                if(st.find(cur)!=st.end()){
+                    t[i+1]=t[i+1]||t[j];
+                    if(t[i+1]) break;
                 }
+                cur.pop_back();
             }
         }
         return t[s.length()];
