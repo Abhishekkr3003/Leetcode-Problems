@@ -3,7 +3,7 @@ public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
         int totalSum=0;
         int curSum=0;
-        int index=-1;
+        int index=0;
         for(int i=0;i<cost.size();i++){
             cost[i]=gas[i]-cost[i];
             curSum+=cost[i];
@@ -11,8 +11,7 @@ public:
             if(curSum<0) {
                 index=-1;
                 curSum=0;
-            }else{
-                if(index==-1) index=i;
+                index=i+1;
             }
         }
         return totalSum<0?-1:index;
