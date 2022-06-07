@@ -5,7 +5,6 @@ class Solution {
             for(int i=1;i<s.length()-1;i++){
                 if(s[i]!='0') return false;
             }
-            // cout<<s.back()<<endl;
             if(s.back()!='0' && s.back()!='1') return false;
             return true;
         }
@@ -38,7 +37,6 @@ public:
         }
         string res="";
         if(is10__(n)){
-            // cout<<"here\n";
             for(int i=0;i<len-1;i++){
                 res+='9';
             }
@@ -54,53 +52,31 @@ public:
         }
         
         long long half=((len&1)?stoll(n.substr(0,len/2+1)):stoll(n.substr(0,len/2)));
-        
+        long long greater, smaller, equal;
         if(len&1){
-            // cout<<"here\n";
-            long long greater=stoll(to_string(half+1)+getReverse(to_string(half+1),true));
-            long long smaller=stoll(to_string(half-1)+getReverse(to_string(half-1),true));
-            long long equal=stoll(to_string(half)+getReverse(to_string(half),true));
-            
-            long long minDiff=LLONG_MAX;
-            long long ans;
-            if(stoll(n)-smaller<minDiff) {
-                minDiff=stoll(n)-smaller;
-                ans=smaller;
-            }
-            if(stoll(n)!=equal && abs(stoll(n)-equal)<=minDiff){
-                minDiff=abs(stoll(n)-equal);
-                ans=equal;
-            }
-            if(greater-stoll(n)<minDiff) {
-                minDiff=greater-stoll(n);
-                ans=greater;
-            }
-            return to_string(ans);
-            
+            greater=stoll(to_string(half+1)+getReverse(to_string(half+1),true));
+            smaller=stoll(to_string(half-1)+getReverse(to_string(half-1),true));
+            equal=stoll(to_string(half)+getReverse(to_string(half),true));
         }else{
-            long long greater=stoll(to_string(half+1)+getReverse(to_string(half+1),false));
-            long long smaller=stoll(to_string(half-1)+getReverse(to_string(half-1),false));
-            long long equal=stoll(to_string(half)+getReverse(to_string(half),false));
-            
-            // cout<<greater<<" "<<smaller<<" "<<equal<<endl;
-            long long minDiff=LLONG_MAX;
-            long long ans;
-            if(stoll(n)-smaller<minDiff) {
-                minDiff=stoll(n)-smaller;
-                ans=smaller;
-            }
-            if(stoll(n)!=equal && abs(stoll(n)-equal)<minDiff){
-                minDiff=abs(stoll(n)-equal);
-                ans=equal;
-            }
-            if(greater-stoll(n)<minDiff) {
-                minDiff=greater-stoll(n);
-                ans=greater;
-            }
-            // cout<<stoll(n)-smaller<<" "<<greater-stoll(n)<<" "<<abs(stoll(n)-equal)<<endl;
-            return to_string(ans);
+            greater=stoll(to_string(half+1)+getReverse(to_string(half+1),false));
+            smaller=stoll(to_string(half-1)+getReverse(to_string(half-1),false));
+            equal=stoll(to_string(half)+getReverse(to_string(half),false));
         }
-        return "";
         
+        long long minDiff=LLONG_MAX;
+        long long ans;
+        if(stoll(n)-smaller<minDiff) {
+            minDiff=stoll(n)-smaller;
+            ans=smaller;
+        }
+        if(stoll(n)!=equal && abs(stoll(n)-equal)<minDiff){
+            minDiff=abs(stoll(n)-equal);
+            ans=equal;
+        }
+        if(greater-stoll(n)<minDiff) {
+            minDiff=greater-stoll(n);
+            ans=greater;
+        }
+        return to_string(ans); 
     }
 };
