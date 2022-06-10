@@ -1,42 +1,44 @@
-/* 
-    Time: O(V+E)
-    Space: O(V+E)
-    Tag: Tarjan's Algorithm Variant, Find the bridges
-    Difficulty: H
-*/
+typedef long long ll;
 
 class Solution {
-    vector<int> disc, low;
-    vector<vector<int>> res;
-    vector<bool> visited;
-    int time = 0;
-
-    void dfs(int node, int parent, vector<int> graph[]) {
-        visited[node] = true;
+    
+    void dfs(vector<ll>graph[], vector<ll>&low, vector<ll>&disc, ll &time, vector<vector<int>>&res, int parent, int cur){
+        // cout<<time<<endl;
         time++;
-        disc[node] = low[node] = time;
-        for (int nbr : graph[node]) {
-            if (!visited[nbr]) {
-                dfs(nbr, node, graph);
-                low[node] = min(low[node], low[nbr]);
-                if (low[nbr] > disc[node]) res.push_back({node, nbr});
-            } else if (nbr != parent) {
-                low[node] = min(low[node], disc[nbr]);
+        disc[cur]=time;
+        low[cur]=time;
+        
+        for(int nbr:graph[cur]){
+            if(nbr!=parent){
+                if(disc[nbr]==LLONG_MAX){
+                    dfs(graph,low,disc,time,res,cur,nbr);
+                    low[cur]=min(low[cur],low[nbr]);
+                    if(low[nbr]>disc[cur])
+                        res.push_back({cur,nbr});
+                }else{
+                    low[cur]=min(low[cur],disc[nbr]);
+                }
             }
         }
     }
-
+    
 public:
-    vector<vector<int>> criticalConnections(int n, vector<vector<int>> &connections) {
-        vector<int> graph[n];
-        for (auto &e : connections) {
-            graph[e[0]].push_back(e[1]);
-            graph[e[1]].push_back(e[0]);
+    vector<vector<int>> criticalConnections(int n, vector<vector<int>>& connections) {
+        vector<ll>graph[n];
+        
+        for(int i=0;i<connections.size();i++){
+            graph[connections[i][0]].push_back(connections[i][1]);
+            graph[connections[i][1]].push_back(connections[i][0]);
         }
-        disc.resize(n, INT_MAX);
-        low.resize(n, INT_MAX);
-        visited.resize(n, false);
-        dfs(0, -1, graph);
+        
+        vector<ll>disc(n, LLONG_MAX);
+        vector<ll>low(n, LLONG_MAX);
+        
+        ll time=0;
+        
+        vector<vector<int>>res;
+        
+        dfs(graph,low,disc,time,res, -1, 0);
         return res;
     }
 };
