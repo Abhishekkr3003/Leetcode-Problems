@@ -9,24 +9,24 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
-    
-    void getRightView(TreeNode *root, vector<int>&res, int &maxDepth, int curDepth){
-        if(!root) return;
-        
-        if(curDepth>maxDepth){
-            res.push_back(root->val);
-            maxDepth++;
-        }
-        getRightView(root->right,res,maxDepth, curDepth+1);
-        getRightView(root->left,res,maxDepth, curDepth+1);        
-    }
-    
+class Solution 
+{
 public:
     vector<int> rightSideView(TreeNode* root) {
+        if(!root) return {};
         vector<int>res;
-        int maxDepth=0;
-        getRightView(root,res,maxDepth, 1);
+        queue<TreeNode*>q;
+        q.push(root);
+        while(!q.empty()) {
+            int size=q.size();
+            res.push_back(q.front()->val);
+            for(int i=0;i<size;i++){
+                TreeNode *p=q.front();
+                q.pop();
+                if(p->right) q.push(p->right);
+                if(p->left) q.push(p->left);
+            }           
+        }
         return res;
     }
 };
