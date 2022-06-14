@@ -1,5 +1,4 @@
 class Solution {
-    vector<string>res;
     unordered_set<string>st;
     
     void recur(string &s, string &cur, int idx, int openCount, int closeCount, int delRemain){
@@ -7,7 +6,6 @@ class Solution {
         if(delRemain<0 || closeCount>openCount) return;
         if(idx==s.length()){
             if(openCount==closeCount && delRemain==0 && st.find(cur)==st.end()) {
-                res.push_back(cur);
                 st.insert(cur);
             }
             return;
@@ -44,6 +42,6 @@ public:
         string cur="";
         
         recur(s,cur,0,0,0,del);
-        return res;
+        return vector<string>(st.begin(),st.end());
     }
 };
