@@ -1,5 +1,5 @@
 class Solution {
-    unordered_set<string>st;
+    set<string>st;
     
     void recur(string &s, string &cur, int idx, int openCount, int closeCount, int delRemain){
         
