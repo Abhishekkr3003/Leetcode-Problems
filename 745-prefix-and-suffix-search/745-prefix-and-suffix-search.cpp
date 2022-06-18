@@ -21,7 +21,6 @@ public:
             for(int i=0;i<words[j].length();i++){
                 pref+=words[j][i];
                 for(string &word:suf){
-                    // cout<<pref<<" "<<word<<endl;
                     mp[pref][word]=j;
                 }
             }
