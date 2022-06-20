@@ -16,7 +16,7 @@ public:
         }
         
         int m=part1.size();
-        unordered_map<int, set<int>>mp;
+        unordered_map<int, vector<int>>mp;
         
         for(int i=0;i<(1<<m);i++){
             int count=0;
@@ -27,8 +27,10 @@ public:
                     sum+=part1[j];
                 }
             }
-            mp[count].insert(sum);
+            mp[count].push_back(sum);
         }
+        
+        for(auto it=mp.begin();it!=mp.end();it++) sort(it->second.begin(),it->second.end());
         
         int res=INT_MAX;
         
@@ -41,12 +43,10 @@ public:
                     sum+=part2[j];
                 }
             }
-            auto it=mp[m-count].lower_bound(totalSum/2-sum);
+            auto it=lower_bound(mp[m-count].begin(), mp[m-count].end(), totalSum/2-sum);
             
             if(it!=mp[m-count].end()){
-                // cout<<sum<<" "<<*it<<endl;
                 res=min(res,abs(totalSum-2*(sum+*it)));
-                // cout<<res<<endl;
             }
         }
         return res;       
