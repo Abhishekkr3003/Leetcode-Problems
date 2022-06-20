@@ -1,31 +1,31 @@
-/* 
-    Time: O(n)
-    Space: O(n)
-    Tag: Stack (Make stack for each freq)
-    Difficulty: M
-*/
-
 class FreqStack {
-    int maxFreq;
-    unordered_map<int,int>mp;
+    unordered_map<int,int>freq;
     unordered_map<int,stack<int>>stacks;
+    int curMax;
 public:
     FreqStack() {
-        maxFreq=0;
+        curMax=0;
     }
     
     void push(int val) {
-        mp[val]++;
-        stacks[mp[val]].push(val);
-        maxFreq=max(maxFreq,mp[val]);
+        if(freq.find(val)==freq.end()){
+            freq[val]=1;
+            curMax=max(curMax,1);
+            stacks[1].push(val);
+            return;
+        }
+        int oldFreq=freq[val];
+        freq[val]=oldFreq+1;
+        stacks[oldFreq+1].push(val);
+        curMax=max(curMax,oldFreq+1);
     }
     
     int pop() {
-        int res=stacks[maxFreq].top();
-        stacks[maxFreq].pop();
-        if(stacks[maxFreq].empty()) maxFreq--;
-        mp[res]--;
-        return res;
+        int num=stacks[curMax].top();
+        stacks[curMax].pop();
+        freq[num]--;
+        if(stacks[curMax].empty()) curMax--;
+        return num;
     }
 };
 
