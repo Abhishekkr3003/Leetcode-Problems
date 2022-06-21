@@ -1,18 +1,24 @@
 class BrowserHistory {
     vector<string>history;
     int curPos;
+    int historySize;
 public:
     BrowserHistory(string homepage) {
         history.push_back(homepage);
         curPos=0;
+        historySize=1;
     }
     
     void visit(string url) {
-        while(curPos<history.size()-1){
-            history.pop_back();
+        if(curPos==history.size()-1) {
+            history.push_back(url);
+            historySize=history.size();
+            curPos++;
         }
-        history.push_back(url);
-        curPos++;
+        else {
+            history[++curPos]=url;
+            historySize=curPos+1;
+        }
     }
     
     string back(int steps) {
@@ -21,7 +27,7 @@ public:
     }
     
     string forward(int steps) {
-        curPos=min((int)history.size()-1,curPos+steps);
+        curPos=min((int)historySize-1,curPos+steps);
         return history[curPos];
     }
 };
