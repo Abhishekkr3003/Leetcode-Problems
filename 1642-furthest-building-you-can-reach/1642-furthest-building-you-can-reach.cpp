@@ -1,30 +1,25 @@
-/*
-    Time: O(nlogn)
-    Space: O(n)
-    Tag: Heap (minheap) and Greedy (Difficult to think)
-    Difficulty: H
-*/
-
 class Solution {
 public:
     int furthestBuilding(vector<int>& heights, int bricks, int ladders) {
-        priority_queue<int, vector<int>, greater<int>>q;
-        int i = 0;
-        for (;i < heights.size() - 1 && ladders;i++) {
-            if (heights[i] < heights[i + 1]) {
+        priority_queue<int,vector<int>,greater<int>>q;
+        
+        for(int i=0;i<heights.size()-1;i++){
+            if(heights[i+1]<=heights[i]) continue;
+            if(ladders){
                 ladders--;
-                q.push(heights[i + 1] - heights[i]);
+                q.push(heights[i+1]-heights[i]);
+            }else{
+                if(!q.empty() && q.top()<heights[i+1]-heights[i]){
+                    q.push(heights[i+1]-heights[i]);
+                    bricks-=q.top();
+                    if(bricks<0) return i;
+                    q.pop();
+                }else{
+                    bricks-=heights[i+1]-heights[i];
+                    if(bricks<0) return i;
+                }
             }
         }
-        while (i < heights.size() - 1) {
-            if (heights[i + 1] > heights[i]) {
-                q.push(heights[i + 1] - heights[i]);
-                if (bricks < q.top()) break;
-                else bricks -= q.top();
-                q.pop();
-            }
-            i++;
-        }
-        return i;
+        return heights.size()-1;
     }
 };
