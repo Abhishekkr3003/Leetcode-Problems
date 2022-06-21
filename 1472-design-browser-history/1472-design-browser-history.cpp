@@ -2,8 +2,10 @@ class BrowserHistory {
     vector<string>history;
     int curPos;
     int historySize;
+    
 public:
     BrowserHistory(string homepage) {
+        history.reserve(5000);
         history.push_back(homepage);
         curPos=0;
         historySize=1;
