@@ -1,14 +1,22 @@
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        vector<int>t(nums.size(),INT_MAX);
-        t[0]=0;
-        for(int i=0;i<nums.size();i++){
-            int thresh=std::min(i+nums[i]+1, (int)nums.size());
-            for(int j=i+1;j<thresh;j++){
-                t[j]=min(t[j],t[i]+1);
+        int steps=1;
+        int maxReach=nums[0];
+        int curReach=nums[0];
+        
+        if(nums.size()==1) return 0;
+        if(maxReach>=nums.size()-1) return steps;
+        
+        for(int i=1;i<nums.size()-1;i++){
+            maxReach=max(maxReach,i+nums[i]);
+            if(maxReach>=nums.size()-1) return steps+1;
+            if(i==curReach){
+                steps++;
+                curReach=maxReach;
+                maxReach=0;
             }
         }
-        return t[nums.size()-1];
+        return 0;
     }
 };
