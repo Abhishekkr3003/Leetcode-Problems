@@ -9,13 +9,12 @@ public:
         
         for(int i=1;i<nums.size();i++){
             maxReach=max(maxReach,i+nums[i]);
-            if(maxReach==nums.size()-1) return true;
+            if(maxReach>=nums.size()-1) return true;
             if(i==curReach){
                 if(maxReach<=i) return false;
                 curReach=maxReach;
                 maxReach=0;
             }
-            // cout<<curReach<<" "<<maxReach<<endl;
         }
         return true;
     }
