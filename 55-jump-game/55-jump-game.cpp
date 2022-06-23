@@ -1,16 +1,22 @@
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-        vector<bool>t(nums.size(),false);
-        t[0]=true;
-        for(int i=0;i<nums.size();i++){
-            if(t[i]==false) return false;
-            int thresh=std::min(i+nums[i]+1, (int)nums.size());
-            for(int j=i+1;j<thresh;j++){
-                t[j]=true;
+        int maxReach=nums[0];
+        int curReach=nums[0];
+        
+        if(nums.size()==1) return true;
+        if(nums[0]==0) return false;
+        
+        for(int i=1;i<nums.size();i++){
+            maxReach=max(maxReach,i+nums[i]);
+            if(maxReach==nums.size()-1) return true;
+            if(i==curReach){
+                if(maxReach<=i) return false;
+                curReach=maxReach;
+                maxReach=0;
             }
+            // cout<<curReach<<" "<<maxReach<<endl;
         }
-        return t[nums.size()-1];
+        return true;
     }
 };
-// Can be solved in O(n) time
