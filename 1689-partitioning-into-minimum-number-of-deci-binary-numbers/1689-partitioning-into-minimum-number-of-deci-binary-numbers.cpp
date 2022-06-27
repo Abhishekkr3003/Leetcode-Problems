@@ -5,6 +5,7 @@ public:
         int len=n.length();
         for(int i=0;i<len;i++){
             res=max(res,n[i]-'0');
+            if(res==9) return res;
         }
         return res;
     }
