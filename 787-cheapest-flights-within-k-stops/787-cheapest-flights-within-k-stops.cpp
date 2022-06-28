@@ -4,7 +4,7 @@ public:
         vector<int>dist(n,INT_MAX), temp(n,INT_MAX);
         dist[src]=0;
         
-        for(int i=0;i<=min(n-1,k);i++){
+        for(int i=0;i<=k;i++){
             for(auto edge:flights){
                 if(dist[edge[0]]==INT_MAX) continue;
                 temp[edge[1]]=min(temp[edge[1]],dist[edge[0]]+edge[2]);
