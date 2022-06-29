@@ -4,9 +4,9 @@ using namespace std;
 typedef long long ll;
 
 /* 
-    Time: O(2^n)
-    Space: O(2^n)
-    Tag: DFS
+    Time: O(n*2^n)
+    Space: O(n*2^n)
+    Tag: DFS, Backtracking
     Difficulty: E
 */
 
