@@ -16,7 +16,7 @@ class Solution {
     
 public:
     int splitArray(vector<int>& nums, int m) {
-        int lo=*min_element(nums.begin(),nums.end()), hi=accumulate(nums.begin(),nums.end(),0);
+        int lo=*max_element(nums.begin(),nums.end()), hi=accumulate(nums.begin(),nums.end(),0);
         int mid=0, ans=-1;
         
         while(lo<=hi){
