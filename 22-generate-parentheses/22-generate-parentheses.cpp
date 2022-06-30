@@ -1,19 +1,32 @@
 class Solution {
-    void solve(int n,int openCount,int closedCount,string curString, vector<string>&res){
-        if(closedCount==n) {
-            res.push_back(curString);
+    vector<string>res;
+    
+    void solve(int &n, int &openCount, int &closeCount, string &cur){
+        if(openCount==n && closeCount==n){
+            res.push_back(cur);
             return;
         }
-        if(openCount>closedCount)
-            solve(n,openCount,closedCount+1,curString+")",res);
-        if(openCount<n)
-            solve(n,openCount+1,closedCount,curString+"(",res);
-        
+        if(openCount<n){
+            cur+='(';
+            openCount++;
+            solve(n,openCount,closeCount,cur);
+            cur.pop_back();
+            openCount--;
+        }
+        if(closeCount<openCount){
+            cur+=')';
+            closeCount++;
+            solve(n,openCount,closeCount,cur);
+            cur.pop_back();
+            closeCount--;
+        }
     }
+    
 public:
     vector<string> generateParenthesis(int n) {
-        vector<string>res;
-        solve(n,0,0,"",res);
+        string cur="";
+        int openCount=0, closeCount=0;
+        solve(n,openCount,closeCount,cur);
         return res;
     }
 };
