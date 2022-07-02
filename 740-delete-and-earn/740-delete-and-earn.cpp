@@ -1,21 +1,26 @@
-// DP-House Robber (Range based) | M | T: O(n+maxele) | T: O(10001)
-
 class Solution {
 public:
     int deleteAndEarn(vector<int>& nums) {
-        vector<int>t(10001,0);
-        int maxNum=0;
-        for(int i=0;i<nums.size();i++){
-            t[nums[i]]++;
-            maxNum=max(maxNum,nums[i]);
+        unordered_map<int,int>mp;
+        for(int &num:nums){
+            mp[num]++;
         }
-        t[1]=1*t[1];
-        t[2]=2*t[2];
-        int res=max(t[1],t[2]);
-        for(int i=3;i<=maxNum;i++){
-            t[i]=i*t[i]+max(t[i-2],t[i-3]);
-            res=max(res,t[i]);
+        vector<pair<int,int>>v;
+        for(auto p:mp) v.push_back({p.first,p.second});
+        sort(v.begin(),v.end());
+        
+        vector<int>t(v.size()+1);
+        t[0]=0;
+        t[1]=v[0].first*v[0].second;
+        
+        for(int i=1;i<v.size();i++){
+            if(v[i].first==v[i-1].first+1){
+                t[i+1]=max(t[i],v[i].first*v[i].second+t[i-1]);
+            }else{
+                t[i+1]=t[i]+v[i].first*v[i].second;
+            }
         }
-        return res;
+        int n=v.size();
+        return max(t[n],t[n-1]);
     }
 };
