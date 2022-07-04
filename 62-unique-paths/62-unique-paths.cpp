@@ -1,16 +1,20 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-
 class Solution {
 public:
     int uniquePaths(int m, int n) {
-        vector<vector<int>> t(m, vector<int>(n, 1));
-        for (int i = 1; i < m; i++) {
-            for (int j = 1; j < n; j++) {
-                t[i][j] = t[i - 1][j] + t[i][j - 1];
-            }
+        m--;
+        n--;
+        
+        long long res=1;
+        
+        int N=m+n;
+        int k=min(m,n);
+        int K=k;
+        for(int i=0;i<k;i++){
+            res*=N;
+            res/=(i+1);
+            N--, K--;
         }
-        return t[m - 1][n - 1];
+        return res;
+        
     }
 };
