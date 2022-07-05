@@ -29,8 +29,8 @@ public:
             sum=(sum+arr[i]);
             maxFromRight=max(maxFromRight,sum);
         }
-        cout<<maxi<<endl;
-        cout<<((maxFromRight)+(maxFromLeft)+(k-2)*sum)%mod;
+        // cout<<maxi<<endl;
+        // cout<<((maxFromRight)+(maxFromLeft)+(k-2)*sum)%mod;
         return max({maxi,((maxFromRight)+(maxFromLeft)+(k-2)*sum),(maxFromRight)+(maxFromLeft)})%mod;
         
     }
