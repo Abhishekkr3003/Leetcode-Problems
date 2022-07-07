@@ -1,4 +1,5 @@
 // Bit Manipulation | M | Time: O(n) | Space: O(1)
+
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
@@ -8,7 +9,7 @@ public:
                 if(nums[i]&(1<<j)) bitCount[j]++;
             }
             for(int j=0;j<32;j++) {
-                if(i&(1<<j)) bitCount[j]--;
+                if((i)&(1<<j)) bitCount[j]--;
             }
         }
         int res=0;
