@@ -15,9 +15,9 @@ class Solution {
         // if(mp.find(key)!=mp.end()) return false;
         
         if(canWe(ms,idx+1,sum1+ms[idx],sum2,sum3,sum4,reqSum)) return true;
-        if(canWe(ms,idx+1,sum1,sum2+ms[idx],sum3,sum4,reqSum)) return true;
-        if(canWe(ms,idx+1,sum1,sum2,sum3+ms[idx],sum4,reqSum)) return true;
-        if(canWe(ms,idx+1,sum1,sum2,sum3,sum4+ms[idx],reqSum)) return true;
+        if(sum2!=sum1 && canWe(ms,idx+1,sum1,sum2+ms[idx],sum3,sum4,reqSum)) return true;
+        if(sum3!=sum1 && sum3!=sum2 && canWe(ms,idx+1,sum1,sum2,sum3+ms[idx],sum4,reqSum)) return true;
+        if(sum4!=sum1 && sum4!=sum2 && sum4!=sum3 && canWe(ms,idx+1,sum1,sum2,sum3,sum4+ms[idx],reqSum)) return true;
         
         // mp.insert(key);
         return false;
