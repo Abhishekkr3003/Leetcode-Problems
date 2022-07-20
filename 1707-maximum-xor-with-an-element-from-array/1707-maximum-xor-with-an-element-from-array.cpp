@@ -43,7 +43,7 @@ public:
 class Solution {
 public:
     vector<int> maximizeXor(vector<int>& nums, vector<vector<int>>& queries) {
-        map<int,map<int,int>>mp;
+        unordered_map<int,unordered_map<int,int>>mp;
         priority_queue<pair<int,int>, vector<pair<int,int>>, greater<pair<int,int>>>q;
         
         for(int i=0;i<queries.size();i++){
