@@ -64,7 +64,7 @@ public:
                 t->insert(nums[ptr++]);
             }
             
-            // if(mp.find(pos)==mp.end() && mp[pos].find(searchVal)==mp[pos].end())
+            if(mp.find(pos)==mp.end() || mp[pos].find(searchVal)==mp[pos].end())
                 mp[pos][searchVal]=t->search(searchVal);
         }
         
