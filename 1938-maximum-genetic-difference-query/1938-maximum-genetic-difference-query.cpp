@@ -51,13 +51,14 @@ public:
 
 class Solution {
     
-    vector<unordered_map<int,int>>mp;
+    vector<vector<pair<int,int>>>mp;
     Trie *t;
+    vector<int>res;
     
     void dfs(vector<int>gr[],int cur){
         t->insert(cur);
         for(auto &child:mp[cur]){
-            mp[cur][child.first]=t->search(child.first);
+            res[child.second]=t->search(child.first);
         }
         for(int &child:gr[cur]){
             dfs(gr,child);
@@ -71,6 +72,7 @@ public:
 
         int n=parents.size();
         vector<int>gr[n];
+        res.resize(queries.size());
         
         int root=-1;
         
@@ -79,16 +81,11 @@ public:
             else gr[parents[i]].push_back(i);
         }
         mp.resize(n);
-        for(auto &v:queries){
-            mp[v[0]][v[1]]=-1;
+        for(int i=0;i<queries.size();i++){
+            mp[queries[i][0]].push_back({queries[i][1],i});
         }
         
         dfs(gr,root);
-        
-        vector<int>res(queries.size());
-        for(int i=0;i<queries.size();i++){
-            res[i]=mp[queries[i][0]][queries[i][1]];
-        }
         
         return res;
     }
