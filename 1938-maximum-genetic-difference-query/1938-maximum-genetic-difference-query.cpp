@@ -51,7 +51,7 @@ public:
 
 class Solution {
     
-    unordered_map<int,unordered_map<int,int>>mp;
+    vector<unordered_map<int,int>>mp;
     Trie *t;
     
     void dfs(vector<int>gr[],int cur){
@@ -78,7 +78,7 @@ public:
             if(parents[i]==-1) root=i;
             else gr[parents[i]].push_back(i);
         }
-        
+        mp.resize(n);
         for(auto &v:queries){
             mp[v[0]][v[1]]=-1;
         }
