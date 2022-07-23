@@ -3,11 +3,8 @@ class Solution {
     vector<int>res;
     
     void merge(vector<pair<int,int>>&nums, int lo, int hi, int mid){
-        
         int h1=lo, h2=mid+1;
-        
         vector<pair<int,int>>temp(hi-lo+1);
-        
         int k=0;
         
         while(h1<=mid && h2<=hi){
@@ -48,6 +45,5 @@ public:
         
         divideAndMerge(t,0,nums.size()-1);
         return res;
-        
     }
 };
