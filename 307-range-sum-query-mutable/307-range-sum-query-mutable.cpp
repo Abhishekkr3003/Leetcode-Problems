@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(n) Build | O(log(n)) Query | O(log(n)) Update
+    Space: O(n)
+    Tag: Segment Tree
+    Difficulty: M
 */
 
 class NumArray {
@@ -30,7 +30,6 @@ public:
     void updateRange(int lo, int hi, int index, int val, int pos) {
         if (pos > hi || pos < lo) return;
         if (lo == hi) {
-            // cout<<lo<<"\n";
             tree[index] = val;
             return;
         }
@@ -42,8 +41,6 @@ public:
     }
     void update(int index, int val) {
         updateRange(0, n - 1, 1, val, index);
-        // for(int num:tree) cout<<num<<" ";
-        // cout<<endl;
     }
 
     int query(int qs, int qe, int lo, int hi, int index) {
