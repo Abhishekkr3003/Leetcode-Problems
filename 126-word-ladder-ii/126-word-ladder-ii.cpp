@@ -1,119 +1,93 @@
 class Solution {
-    vector<string> words;
-    vector<vector<string>> res;
-    
-    void bfs(vector<int> graph[], int root, int target, int graphSize) {
-        
-        queue<vector<int>> q;
-        q.push({root});
-        int size = 0;
-        bool stop=false;
-        bool visited[1002] = {0};
-        
-        visited[root] = 1;
-        
-        while (!q.empty() && !stop) {
-            size = q.size();
-            for (int i = 0; i < size; i++) {
-                vector<int> nodeList = q.front();
-                // cout<<words[nodeList.back()]<<" ";
-                visited[nodeList.back()] = true;
-                q.pop();
-                // if(nodeList.back()==target) {
-                //     vector<string>temp(nodeList.size());
-                //     for(int j=0;j<nodeList.size();j++) temp[j]=words[nodeList[j]];
-                //     res.push_back(temp);
-                //     stop=true;
-                //     continue;
-                // }
-                for (int nbr : graph[nodeList.back()]) {
-                    if(nbr==target){
-                        nodeList.push_back(nbr);
-                        vector<string>temp(nodeList.size());
-                        for(int j=0;j<nodeList.size();j++) 
-                            temp[j]=words[nodeList[j]];
-                        res.push_back(temp);
-                        stop=true;
-                        break;
-                    }
-                    if (!visited[nbr]) {   
-                        
-                        nodeList.push_back(nbr);
-                        q.push(nodeList);
-                        nodeList.pop_back();
-                    }
-                }
-            }
-        }
-    }
-
-    // void dfs(vector<int> graph[], int root, int target, int dist, vector<string> &cur, vector<bool>&visited) {
-    //     cout<<dist<<" ";
-    //     cout<<words[root]<<endl;
-    //     if (dist <= 0) return;
-    //     dist--;
-    //     for (int nbr : graph[root]) {
-    //         if(!visited[nbr]){
-    //             if(dist==0){
-    //                 if(nbr==target){
-    //                     cur.push_back(words[nbr]);
-    //                     res.push_back(cur);
-    //                     cur.pop_back();
-    //                 }
-    //                 return;
-    //             }else{
-    //                 cur.push_back(words[nbr]);
-    //                 visited[nbr]=true;
-    //                 dfs(graph, nbr, target, dist, cur,visited);
-    //                 cur.pop_back();
-    //                 // visited[nbr]=false;
-    //             }
-    //         }
-    //     }
-    // }
-
 public:
-    vector<vector<string>> findLadders(string beginWord, string endWord, vector<string> &wordList) {
-        int beginWordIndex = -1, endWordIndex = -1;
-        // cout<<wordList.size()<<endl;
-        for (int i = 0; i < wordList.size(); i++) {
-            if (wordList[i] == beginWord)
-                beginWordIndex = i;
-            else if (wordList[i] == endWord)
-                endWordIndex = i;
-        }
-        if (endWordIndex == -1) return (vector<vector<string>>){};
-        if (beginWordIndex == -1) {
-            beginWordIndex = wordList.size();
-            wordList.push_back(beginWord);
-        }
-        int n=beginWord.length();
-        vector<int> graph[wordList.size() + 2];
-        for (int i = 0; i < wordList.size() - 1; i++) {
-            for (int j = i + 1; j < wordList.size(); j++) {
-                int diff = 0;
-                for (int k = 0; k < n; k++) {
-                    if(wordList[i][k]!=wordList[j][k]) diff++;
-                }
-                // cout<<diff<<endl;
-                if (diff == 1) {
-                    // cout<<i<<" "<<j<<endl;
-                    graph[i].push_back(j);
-                    graph[j].push_back(i);
-                }
+bool able(string s,string t){
+    int c=0;
+    for(int i=0;i<s.length();i++)
+        c+=(s[i]!=t[i]);
+    return c==1;
+}
+void bfs(vector<vector<int>> &g,vector<int> parent[],int n,int start,int end){
+    vector <int> dist(n,1005);
+    queue <int> q;
+    q.push(start);
+    parent[start]={-1};
+    dist[start]=0;
+    while(!q.empty()){
+        int x=q.front();
+        q.pop();
+        for(int u:g[x]){
+            if(dist[u]>dist[x]+1){
+                dist[u]=dist[x]+1;
+                q.push(u);
+                parent[u].clear();
+                parent[u].push_back(x);
             }
+            else if(dist[u]==dist[x]+1)
+                parent[u].push_back(x);
         }
-        this->words = wordList;
-        // for(int num:graph[beginWordIndex]) cout<<wordList[num]<<" ";
-        // cout<<endl;
-        bfs(graph, beginWordIndex, endWordIndex, wordList.size());
-        // if(dist==-1) return res;
-        // cout<<dist<<" "<<beginWordIndex<<" "<<endWordIndex<<endl;
-        // vector<string> cur;
-        // cur.push_back(wordList[beginWordIndex]);
-        // vector<bool>visited(wordList.size(),false);
-        // visited[beginWordIndex]==1;
-        // dfs(graph, beginWordIndex, endWordIndex, dist, cur,visited);
-        return res;
     }
-};
+}
+void shortestPaths(vector<vector<int>> &Paths, vector<int> &path, vector<int> parent[],int node){
+    if(node==-1){
+        // as parent of start was -1, we've completed the backtrack
+        Paths.push_back(path);
+        return ;
+    }
+    for(auto u:parent[node]){
+        path.push_back(u);
+        shortestPaths(Paths,path,parent,u);
+        path.pop_back();
+    }
+}
+vector<vector<string>> findLadders(string beginWord, string endWord, vector<string>& wordList) {
+    // start and end are indices of beginWord and endWord
+    int n=wordList.size(),start=-1,end=-1;
+    vector<vector<string>> ANS;
+    for(int i=0;i<n;i++){
+        if(wordList[i]==beginWord)
+            start=i;
+        if(wordList[i]==endWord)
+            end=i;
+    }
+    
+    // if endWord doesn't exist, return empty list
+    if(end==-1)
+        return ANS;
+    
+    // if beginWord doesn't exist, add it in start of WordList
+    if(start==-1){
+        wordList.emplace(wordList.begin(),beginWord);
+        start=0;
+        end++;
+        n++;
+    }
+    // for each word, we're making adjency list of neighbour words (words that can be made with one letter change)
+    // Paths will store all the shortest paths (formed later by backtracking)
+    vector<vector<int>> g(n,vector<int>()),Paths;
+    
+    // storing possible parents for each word (to backtrack later), path is the current sequence (while backtracking)
+    vector<int> parent[n],path;
+    
+    // creating adjency list for each pair of words in the wordList (including beginword)
+    for(int i=0;i<n-1;i++)
+        for(int j=i+1;j<n;j++)
+            if(able(wordList[i],wordList[j])){
+                g[i].push_back(j);
+                g[j].push_back(i);
+            }
+    
+    bfs(g,parent,n,start,end); 
+    
+    // backtracking to make shortestpaths
+    shortestPaths(Paths,path,parent,end);
+    for(auto u:Paths){
+        vector <string> now;
+        for(int i=0;i<u.size()-1;i++)
+            now.push_back(wordList[u[i]]);
+        reverse(now.begin(),now.end());
+        now.push_back(wordList[end]);
+        ANS.push_back(now);
+    }
+    return ANS;
+}
+}; 
