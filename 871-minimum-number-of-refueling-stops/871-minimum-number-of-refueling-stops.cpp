@@ -1,23 +1,21 @@
 class Solution {
 public:
-    int minRefuelStops(int target, int startFuel, vector<vector<int>>& stations) {
-        priority_queue<int>q;
-        sort(stations.begin(),stations.end());
-        
-        int curLoc=startFuel;
-        int res=0;
-        int pos=0;
-        int n=stations.size();
-        
-        while(curLoc<target){
-            while(pos<n && stations[pos][0]<=curLoc){
-                q.push(stations[pos][1]);
-                pos++;
+    int minRefuelStops(int target, int startFuel, vector<vector<int>> &stations) {
+        if (target <= startFuel) return 0;
+        priority_queue<int> pq;
+        pq.push(startFuel);
+
+        int pos = 0;
+        int idx = 0;
+        int res = -1;
+        while (pos < target) {
+            while (idx < stations.size() && stations[idx][0] <= pos) {
+                pq.push(stations[idx++][1]);
             }
-            if(q.empty()) return -1;
-            curLoc+=q.top();
+            if (pq.empty()) return -1;
+            pos += pq.top();
+            pq.pop();
             res++;
-            q.pop();
         }
         return res;
     }
