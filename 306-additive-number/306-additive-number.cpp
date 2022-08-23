@@ -22,7 +22,7 @@ public:
                 if((num[0]=='0' && i>1) || (num[i]=='0' && j>1)) continue;
                 long long f=stoll(num.substr(0,i));
                 long long s=stoll(num.substr(i,j));
-                cout<<f<<" "<<s<<endl;
+                // cout<<f<<" "<<s<<endl;
                 if(findSol(i+j-1,num,f,s)) return true;
             }
         }
