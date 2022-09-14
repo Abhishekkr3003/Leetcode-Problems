@@ -1,3 +1,5 @@
+// Bit Manipulation can be used instead of map by using 10 bits than 10 mappings, see solution section for more details.
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
