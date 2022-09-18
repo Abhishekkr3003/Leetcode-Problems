@@ -16,9 +16,7 @@ public:
         
         int res=0;
         for(int i=0;i<n;i++){
-            // cout<<ngr[i]<<" "<<ngl[i]<<endl;
             res+=max(0,min(ngl[i],ngr[i])-height[i]);
-            // cout<<res<<endl;
         }
         return res;
     }
