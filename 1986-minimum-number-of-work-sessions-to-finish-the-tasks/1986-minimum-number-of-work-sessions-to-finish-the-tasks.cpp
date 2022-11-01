@@ -7,7 +7,7 @@
 
 class Solution {
     vector<int> sessions;
-    map<string, int> t;
+    unordered_map<string, int> t;
     int sessionTime;
     vector<int> tasks;
 
