@@ -1,8 +1,8 @@
 /* 
-    Time: O()
-    Space: O()
-    Tag: 
-    Difficulty: 
+    Time: O(m*n)
+    Space: O(m) // for output only
+    Tag: Matrix
+    Difficulty: E 
 */
 
 class Solution {
